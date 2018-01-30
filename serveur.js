@@ -23,9 +23,9 @@ app.use('/api', appRoutes); // Assign name to end points (e.g., '/api/management
 // 
 mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
     if (err) {
-        console.log('Not connected to the database: ' + err); // Log to console if unable to connect to database
+        console.log('Non connecté à la base de données: ' + err); // Log to console if unable to connect to database
     } else {
-        console.log('Successfully connected to MongoDB'); // Log to console if able to connect to database
+        console.log('Connecté avec succès à MongoDB'); // Log to console if able to connect to database
     }
 });
 
@@ -36,5 +36,5 @@ app.get('*', function(req, res) {
 
 // Start Server
 app.listen(port, function() {
-    console.log('Running the server on port ' + port); // Listen on configured port
+    console.log('Exécution du serveur sur le port ' + port); // Listen on configured port
 });
