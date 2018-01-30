@@ -1,0 +1,31 @@
+<div class="page-header">
+    <h1>Ajouter une question</h1>
+</div>
+<form ng-submit="enregistrer.enrgQuestion(enrgData);"><!--enregistrer est dans le ficher routes-->
+    <label>Votre question:</label>
+    <input class="form-control" type="text" name="laquestion" placeholder="enter email" ng-model="enregistrer.enrgData.laquestion">
+    <br>
+    <label>La coordonnée X:</label>
+    <input class="form-control" type="number" name="coordonnee_x" placeholder="enter user" ng-model="enregistrer.enrgData.coordonnee_x">
+    <br>
+    <label>La coordonnée Y:</label>
+    <input class="form-control" type="number" name="coordonnee_y" placeholder="enter password" ng-model="enregistrer.enrgData.coordonnee_y">
+    <br>
+    <button class="btn btn-primary" type="submit">Enregistrer</button>
+</form>
+<br>
+    <div class="jumbotron text-center" ng-show="enregistrer.loading">
+        <span class="glyphicon glyphicon-repeat spinner"></span>
+        <p>Loading...</p>
+    </div>
+<br>
+<div class="row show-hide-message" ng-show="enregistrer.successMsg">
+    <div class="alert alert-success">
+        {{enregistrer.successMsg}}
+    </div>
+</div>
+<div class="row show-hide-message" ng-show="enregistrer.errorMsg">
+    <div class="alert alert-danger">
+        {{enregistrer.errorMsg}}
+    </div>
+</div>
