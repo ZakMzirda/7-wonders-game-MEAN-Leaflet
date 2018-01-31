@@ -1,18 +1,16 @@
 angular.module('mapControllers', [])
 .controller('leafletCtrl',function($scope, $http){
-    var mymap = L.map('mapid').setView([48.8587741, 2.2069771,11], 13);
-	var coordx = 48.857374;
-	var coordy = 2.204046;
+	var mymap = L.map('mapid').setView([48.8583701, 2.2922926, 17], 13);
+	var coordx = 48.8583701;
+	var coordy = 2.2922926;
 	$scope.ville = "";
+	$scope.question=[];
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+		maxZoom: 8,
 		id: 'mapbox.streets'
 	}).addTo(mymap);
-	L.marker([48.8587741, 2.2069771,11]).addTo(mymap)
-		.bindPopup("<b>Hello world!").openPopup();
+	L.marker([48.8583701, 2.2922926, 17]).addTo(mymap)
+		.bindPopup("La tour eiffel").openPopup();
 	
 	/*Avoir les coordonnées x et y*/ 
 		
@@ -28,7 +26,32 @@ angular.module('mapControllers', [])
 			console.log($scope.ville);
 		})	
 	}
+
+	function CalculDistance(e){
+		var score = 100;
+		var distance = Math.sqrt(((coordx-e.latlng.lat)*(coordx-e.latlng.lat))+((coordy-e.latlng.lng)*(coordy-e.latlng.lng)));
+		//console.log('Distance : '+ distance);
+		//requete pour recuperer les données json
+		$http.get('api/GetQuestion').success(function (response) {
+			var taille = response.maquestion.length;
+			for(var i =0; i<taille; i++){
+				$scope.question[i]=response.maquestion[i].laquestion;
+				//console.log($scope.question[i]);
+			}
+			//console.log($scope.question)
+			
+		})	
+
+		if(distance <= 0.1){
+			console.log('Bien joué! votre score est '+ score);
+		}
+		if(distance >= 0.1){
+			score=score-80;
+			console.log('Vous êtes loin! votre score est '+score);
+		}
+	}
 	
-	mymap.on('click', onMapClick);
+	//mymap.on('click', onMapClick);
+	mymap.on('click', CalculDistance);
 
 });

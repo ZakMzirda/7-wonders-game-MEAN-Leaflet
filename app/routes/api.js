@@ -22,6 +22,22 @@ module.exports = function(router) {
             });
         }
     });
+    router.get('/GetQuestion', function(req, res) {
+        Question.find({}, function(err, maquestion){
+
+
+            if(err){
+                res.json({success: false, message :'Erreur(!) sur la recuperation des données'});
+
+            }else{
+                res.json({success: true, message :'Recuperation des données avec succès', maquestion});
+
+            }
+     
+        });
+    });
+
+
     return router;
 }
     
