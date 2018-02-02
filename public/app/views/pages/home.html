@@ -1,7 +1,15 @@
 <div class="page-header">
-    <h1>Map avec Leaflet</h1>
+    <h1>Jeu avec Leaflet</h1>
 </div>
-
-<button class="btn btn-primary" ng-click="leafletmap.getrndQuestion();">Jouer</button>
-<br></br>
-<div id="mapid" style="width: 1000px; height: 600px;"></div>
+<body>
+    <button class="btn btn-primary" ng-click="leafletmap.getrndQuestion();">Jouer</button>
+    <button class="btn btn-primary" ng-click="leafletmap.resetquestion();">Re Jouer</button>
+    
+    <br><br>
+    <div class="jumbotron text-center" ng-show="leafletmap.rndquestion">
+        <p ng-if="leafletmap.chance==null" class="input-red">{{leafletmap.rndquestion}}</p>
+        <p class="input-green">{{leafletmap.chance}}</p>
+    </div>
+    <br>
+    <div id="mapid" class="map"></div>
+</body>
