@@ -6,6 +6,7 @@ angular.module('mapControllers', [])
 	$scope.question=[];
 	$scope.crdx=[];
 	$scope.crdy=[];
+	$scope.ids=[];
 	var info =this;//pour pouvoir recuperer les donnes a l'interieur des fonctions et les utiliser dans les pages html
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -66,15 +67,14 @@ angular.module('mapControllers', [])
 				$scope.question[i]=response.maquestion[i].laquestion;
 				$scope.crdx[i]=response.maquestion[i].coordonnee_x;
 				$scope.crdy[i]=response.maquestion[i].coordonnee_y;
-
+				$scope.ids[i]=response.maquestion[i]._id;
 			}
-
 			
 			var randomQuestion = $scope.question[randomvalue];
 			var randomQuestion_crdx = $scope.crdx[randomvalue];
 			var randomQuestion_crdy = $scope.crdy[randomvalue];
-			
-			
+			var id = $scope.ids[randomvalue];
+			console.log('id = '+id);
 			//console.log(randomQuestion);
 			//console.log(randomQuestion_crdx);
 			//console.log(randomQuestion_crdy);
@@ -114,6 +114,14 @@ angular.module('mapControllers', [])
 					
 					info.chance='Oulala trop loin!! votre score est '+score +' sur 100';					
 				}
+				console.log(randomQuestion);
+				//Mettre le score dans la base de données
+				$http.put('/api/addScore'+id).success(function (response) {
+					console.log(response);
+
+				})
+
+
 			}
 			
 			info.rndquestion=randomQuestion;
