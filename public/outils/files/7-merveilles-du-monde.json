@@ -10,7 +10,7 @@
     
     {
         "_id" : ObjectId("5a74c15249cc2225f8141935"),
-        "laquestion" : "Ou se trouve le colis�e de rome ?",
+        "laquestion" : "Ou se trouve le colisée de rome ?",
         "coordonnee_x" : 41.8902102,
         "coordonnee_y" : 12.4900422,
         "__v" : 0
@@ -19,7 +19,7 @@
     
     {
         "_id" : ObjectId("5a74e4292efca616a4cab550"),
-        "laquestion" : "Ou se trouve p�tra ?",
+        "laquestion" : "Ou se trouve pétra ?",
         "coordonnee_x" : 30.3284544,
         "coordonnee_y" : 35.4421735,
         "__v" : 0
@@ -28,7 +28,7 @@
     
     {
         "_id" : ObjectId("5a74e4812efca616a4cab551"),
-        "laquestion" : "Ou se trouve Le Christ R�dempteur ?",
+        "laquestion" : "Ou se trouve Le Christ Rédempteur ?",
         "coordonnee_x" : -22.951916,
         "coordonnee_y" : -43.2126759,
         "__v" : 0

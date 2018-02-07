@@ -74,7 +74,7 @@ angular.module('mapControllers', [])
 			var randomQuestion_crdx = $scope.crdx[randomvalue];
 			var randomQuestion_crdy = $scope.crdy[randomvalue];
 			var id = $scope.ids[randomvalue];
-			console.log('id = '+id);
+		
 			//console.log(randomQuestion);
 			//console.log(randomQuestion_crdx);
 			//console.log(randomQuestion_crdy);
@@ -84,7 +84,6 @@ angular.module('mapControllers', [])
 				+((randomQuestion_crdy-e.latlng.lng)*(randomQuestion_crdy-e.latlng.lng)));
 				console.log('Distance : '+ distance);
 				//requete pour recuperer les données json
-				
 				if(distance <= 0.4){
 					
 					info.chance='Excellent!! votre score est '+ score +' sur 100';
@@ -115,13 +114,15 @@ angular.module('mapControllers', [])
 					info.chance='Oulala trop loin!! votre score est '+score +' sur 100';					
 				}
 				console.log(randomQuestion);
-				//Mettre le score dans la base de données
-				$http.put('/api/addScore'+id).success(function (response) {
-					console.log(response);
 
+				//Mettre le score dans la base de données
+				$http.get('/api/GetQuestionById/'+id).success(function (response) {
+					
+					console.log(response);
+					
 				})
 
-
+				
 			}
 			
 			info.rndquestion=randomQuestion;

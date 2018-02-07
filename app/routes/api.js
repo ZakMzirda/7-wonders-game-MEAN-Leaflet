@@ -24,44 +24,45 @@ module.exports = function(router) {
             });
         }
     });
-    router.put('/addScore/:id', function(req, res) {
+    /*router.put('/addScore/:id', function(req, res) {
         var id = req.params.id;
+        //res.send('jai reçu : ' +req.score);
         Question.findOne({_id: id}, function(err, objectTrouve){
            if(err){
                console.log(err);
-               res.status(500).send();
+               res.json({success: false, message :'Erreur(!) donnée non trouvée'});
            }else{
                if(!objectTrouve){
-                    res.status(404).send();
+                    res.json({success: false, message :'Erreur(!) donnée non trouvée'});
                }else{
-                   if(req.body.laquestion){
-                       objectTrouve.laquestion=req.body.laquestion;
-                   }
-                   if(req.body.coordonnee_x){
-                       objectTrouve.coordonnee_x=req.body.coordonnee_x;
-                   }
-                   if(req.body.coordonnee_y){
-                       objectTrouve.coordonnee_y=req.body.coordonnee_y;
-                   }
+                   
                    if(req.body.les_scores){
                        objectTrouve.les_scores=req.body.les_scores;
                    }
                    objectTrouve.save(function(err, updatescore){
                        if(err){
                            console.log(err);
-                           res.status(500).send();
+                           res.json({success: false, message :'Erreur(!) donnée non sauvegarder'});
                        }else{
                            res.send(updatescore);
                        }
                    });
 
-
-
                }
            }
         });
             
+    });*/
+    router.get('/GetQuestionById/:id', function(req, res) {
+        var id = req.params.id;
+        Question.findOne({_id: id}, function(err, data){
+           res.json(data);
+        });
+            
     });
+
+
+
     router.get('/GetQuestion', function(req, res) {
         Question.find({}, function(err, maquestion){
 
