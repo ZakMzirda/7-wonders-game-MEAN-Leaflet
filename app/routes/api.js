@@ -24,7 +24,7 @@ module.exports = function(router) {
             });
         }
     });
-    /*router.put('/addScore/:id', function(req, res) {
+    router.get('/addScore/:id', function(req, res) {
         var id = req.params.id;
         //res.send('jai reçu : ' +req.score);
         Question.findOne({_id: id}, function(err, objectTrouve){
@@ -52,16 +52,19 @@ module.exports = function(router) {
            }
         });
             
-    });*/
-    router.get('/GetQuestionById/:id', function(req, res) {
-        var id = req.params.id;
-        Question.findOne({_id: id}, function(err, data){
-           res.json(data);
-        });
-            
     });
-
-
+   router.put('/addScore/:id', function(req, res){
+       var id = req.params.id;
+       console.log(req.body.laquestion);
+        //console.log(req);
+       Question.findOne({_id: id}, function(err, objectTrouve){
+           objectTrouve.les_scores=req.body.les_scores;
+           objectTrouve.save();
+           //res.send(objectTrouve);
+           console.log(objectTrouve);
+       });
+        
+   });
 
     router.get('/GetQuestion', function(req, res) {
         Question.find({}, function(err, maquestion){

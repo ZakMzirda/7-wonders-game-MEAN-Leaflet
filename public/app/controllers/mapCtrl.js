@@ -7,6 +7,8 @@ angular.module('mapControllers', [])
 	$scope.crdx=[];
 	$scope.crdy=[];
 	$scope.ids=[];
+
+	$scope.donnee=null;
 	var info =this;//pour pouvoir recuperer les donnes a l'interieur des fonctions et les utiliser dans les pages html
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -57,6 +59,7 @@ angular.module('mapControllers', [])
 	}
 	
 	info.nbrofclick = 0;
+	//info.i=0;
 	this.getrndQuestion=function Getrndquestion(){
 		info.rndquestion="";
 		$http.get('api/GetQuestion').success(function (response) {
@@ -80,6 +83,7 @@ angular.module('mapControllers', [])
 			//console.log(randomQuestion_crdy);
 			function CalculDistance(e){
 				var score = 100;
+				//var i = 0;
 				var distance = Math.sqrt(((randomQuestion_crdx-e.latlng.lat)*(randomQuestion_crdx-e.latlng.lat))
 				+((randomQuestion_crdy-e.latlng.lng)*(randomQuestion_crdy-e.latlng.lng)));
 				console.log('Distance : '+ distance);
@@ -116,15 +120,21 @@ angular.module('mapControllers', [])
 				console.log(randomQuestion);
 
 				//Mettre le score dans la base de données
-				$http.get('/api/GetQuestionById/'+id).success(function (response) {
+				$http.get('/api/addScore/'+id).success(function (response) {
+					//$scope.getscore=response.les_scores
+					//console.log("response "+" "+$scope.getscore);
 					
-					console.log(response);
-					
+						$scope.donnee=response;
+						$scope.donnee.les_scores=score;
+						console.log('le score dans get '+score);
+						$http.put('/api/addScore/'+id, $scope.donnee).success(function (response) {
+						console.log($scope.donnee);
+					})
+						
 				})
-
-				
+				//i++;
+				//console.log('i = '+i);	
 			}
-			
 			info.rndquestion=randomQuestion;
 			
 			//console.log(info.nbrofclick);
