@@ -37,3 +37,8 @@ app.get('*', function(req, res) {
 app.listen(port, function() {
     console.log('Exécution du serveur sur le port ' + port); // Ecoute sur le port qu'on a configuré
 });
+
+
+//photo/description https://fr.wikipedia.org/wiki/Sept_Merveilles_du_monde#Le_Phare
+//3 collections (2 alea) + 1 perso
+//afficher la distance
