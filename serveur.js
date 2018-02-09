@@ -1,20 +1,20 @@
-var express = require('express'); //importer le framwork expressjs
-var app = express();//creation d'une variable express
-var port = process.env.PORT || 8080; // Set default port or assign a port in enviornment
-var morgan = require('morgan'); // Import Morgan Package
-var mongoose = require('mongoose'); // HTTP request logger middleware for Node.js
+var express = require('express'); //demande d'inclusion d'Express 
+var app = express();//creation d'un objet app
+var port = process.env.PORT || 8080; // Définir le port par défaut
+var morgan = require('morgan'); // Charge le middleware de logging
+var mongoose = require('mongoose'); // HTTP request logger middleware pour Node.js
 
-var bodyParser = require('body-parser'); // Node.js body parsing middleware. Parses incoming request bodies in a middleware before your handlers, available under req.body.
-var router = express.Router(); // Invoke the Express Router
-var appRoutes = require('./app/routes/api')(router); // Import the application end points/API
-var path = require('path'); // Import path module
+var bodyParser = require('body-parser'); // Charge le middleware de gestion des paramètres
+var router = express.Router(); // Invoque le routeur express
+var appRoutes = require('./app/routes/api')(router); // Importer les points de terminaison
+var path = require('path'); // Import du module path
 //var passport = require('passport'); // Express-compatible authentication middleware for Node.js.
 //var social = require('./app/passport/passport')(app, passport); // Import passport.js End Points/API
 
-app.use(morgan('dev')); // Morgan Middleware
-app.use(bodyParser.json()); // Body-parser middleware
+app.use(morgan('dev')); // Active le middleware de logging
+app.use(bodyParser.json()); // Active le Body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
-app.use(express.static(__dirname + '/public')); // Allow front end to access public folder
+app.use(express.static(__dirname + '/public')); // Autoriser le front end à accéder au dossier public
 app.use('/api', appRoutes); // Assign name to end points (e.g., '/api/management/', '/api/users' ,etc. )
 
 // 
@@ -22,18 +22,18 @@ app.use('/api', appRoutes); // Assign name to end points (e.g., '/api/management
 // 
 mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
     if (err) {
-        console.log('Non connecté à la base de données: ' + err); // Log to console if unable to connect to database
+        console.log('Non connecté à la base de données: ' + err); 
     } else {
-        console.log('Connecté avec succès à MongoDB'); // Log to console if able to connect to database
+        console.log('Connecté avec succès à MongoDB'); 
     }
 });
 
 // Set Application Static Layout
 app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/app/views/index.html')); // Set index.html as layout
+    res.sendFile(path.join(__dirname + '/public/app/views/index.html')); // Definition de index.html comme page de disposition
 });
 
 // Start Server
 app.listen(port, function() {
-    console.log('Exécution du serveur sur le port ' + port); // Listen on configured port
+    console.log('Exécution du serveur sur le port ' + port); // Ecoute sur le port qu'on a configuré
 });
