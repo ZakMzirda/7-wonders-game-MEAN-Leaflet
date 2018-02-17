@@ -24,6 +24,9 @@ module.exports = function(router) {
             });
         }
     });
+    router.post('/testcollections', function(req, res) {
+        res.send('cool');
+    });
     router.get('/addScore/:id', function(req, res) {
         var id = req.params.id;
         //res.send('jai reçu : ' +req.score);

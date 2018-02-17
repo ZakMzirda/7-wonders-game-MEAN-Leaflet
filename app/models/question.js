@@ -8,4 +8,4 @@ var QuestionSchema = new Schema({
     coordonnee_y : {type : Number, required:true},
     les_scores : {type : [Number]}
 });
-module.exports = mongoose.model('Question', QuestionSchema);//pour l'exporter vers le serveur
+module.exports = mongoose.model('Question', QuestionSchema, 'Question');//pour l'exporter vers le serveur

@@ -146,6 +146,7 @@ angular.module('mapControllers', [])
 
 
 			mymap.on('click', CalculDistance);
+		
 			
 		})
 		info.nbrofclick++;
