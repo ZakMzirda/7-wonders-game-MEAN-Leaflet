@@ -5,7 +5,7 @@ angular.module('questionControllers', [])
     this.enrgQuestion = function(enrgData){
         app.loading=true;
         app.errorMsg=false;
-        $http.post('/api/questions123', this.enrgData).then(function(data){
+        $http.post('/api/questions', this.enrgData).then(function(data){
             /*console.log(data.data.success);
             console.log(data.data.message);*/
             if(data.data.success){

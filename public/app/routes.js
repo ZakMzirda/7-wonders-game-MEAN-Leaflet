@@ -7,6 +7,7 @@ angular.module('appRoutes', ['ngRoute'])
         controller: 'leafletCtrl',
         controllerAs: 'leafletmap'
     })
+    
     .when('/about',{
         templateUrl:'app/views/pages/about.html'
     })

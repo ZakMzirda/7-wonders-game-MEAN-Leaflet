@@ -1,6 +1,6 @@
-[
+{
+    "Questions":[
     {
-        "_id" : ObjectId("5a74c05d49cc2225f8141934"),
         "laquestion" : "Ou se trouve la grande muraille de chine ?",
         "coordonnee_x" : 40.4319077,
         "coordonnee_y" : 116.5681862,
@@ -9,7 +9,6 @@
 
     
     {
-        "_id" : ObjectId("5a74c15249cc2225f8141935"),
         "laquestion" : "Ou se trouve le colisée de rome ?",
         "coordonnee_x" : 41.8902102,
         "coordonnee_y" : 12.4900422,
@@ -18,7 +17,6 @@
 
     
     {
-        "_id" : ObjectId("5a74e4292efca616a4cab550"),
         "laquestion" : "Ou se trouve pétra ?",
         "coordonnee_x" : 30.3284544,
         "coordonnee_y" : 35.4421735,
@@ -27,7 +25,6 @@
 
     
     {
-        "_id" : ObjectId("5a74e4812efca616a4cab551"),
         "laquestion" : "Ou se trouve Le Christ Rédempteur ?",
         "coordonnee_x" : -22.951916,
         "coordonnee_y" : -43.2126759,
@@ -36,7 +33,6 @@
 
     
     {
-        "_id" : ObjectId("5a74e4a92efca616a4cab552"),
         "laquestion" : "Ou se trouve Machu Picchu ?",
         "coordonnee_x" : -13.1631412,
         "coordonnee_y" : -72.5471516,
@@ -45,7 +41,6 @@
 
     
     {
-        "_id" : ObjectId("5a74e4d12efca616a4cab553"),
         "laquestion" : "Ou se trouve Chichen Itza ?",
         "coordonnee_x" : 20.6842849,
         "coordonnee_y" : -88.5699713,
@@ -54,10 +49,10 @@
 
     
     {
-        "_id" : ObjectId("5a74e5032efca616a4cab554"),
         "laquestion" : "Ou se trouve Le Taj Mahal ?",
         "coordonnee_x" : 27.1750151,
         "coordonnee_y" : 78.0399665,
         "__v" : 0
     }
 ]
+}

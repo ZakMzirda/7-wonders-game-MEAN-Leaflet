@@ -17,13 +17,45 @@ app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x
 app.use(express.static(__dirname + '/public')); // Autoriser le front end à accéder au dossier public
 app.use('/api', appRoutes); // Assign name to end points (e.g., '/api/management/', '/api/users' ,etc. )
 
-// 
-// <---------- REPLACE WITH YOUR MONGOOSE CONFIGURATION ---------->
-// 
+var fs = require('fs');
+var Question = require('./app/models/question');
+
+
 mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
     if (err) {
         console.log('Non connecté à la base de données: ' + err); 
     } else {
+        fs.readFile(__dirname+'/public/outils/files/7-merveilles-du-monde.json',
+        // callback function that is called when reading file is done
+
+        function(err, data) {		
+            // json data
+            if(err){
+                console.log('ERREUR (!)'+err);
+            }else{
+                
+                var jsonData = data;
+                var jsonParsed = JSON.parse(jsonData);
+                for(var i =0; i<jsonParsed.Questions.length;i++){
+                    var question = new Question();
+                    question.laquestion = jsonParsed.Questions[i].laquestion; 
+                    question.coordonnee_x = jsonParsed.Questions[i].coordonnee_x; 
+                    question.coordonnee_y = jsonParsed.Questions[i].coordonnee_y;
+                    question.les_scores=0;
+                    question.save();
+                    console.log(question);
+                }
+                //console.log(jsonParsed.Questions.length);
+                //console.log(jsonParsed.Questions);
+            }
+            
+            
+            // access elements
+            //console.log(jsonParsed);
+    });
+
+
+
         console.log('Connecté avec succès à MongoDB'); 
     }
 });
@@ -37,6 +69,8 @@ app.get('*', function(req, res) {
 app.listen(port, function() {
     console.log('Exécution du serveur sur le port ' + port); // Ecoute sur le port qu'on a configuré
 });
+
+//chargement base
 
 
 //photo/description https://fr.wikipedia.org/wiki/Sept_Merveilles_du_monde#Le_Phare
