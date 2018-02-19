@@ -2,11 +2,15 @@
     <h1>Jeu avec Leaflet</h1>
 </div>
 <body>
-    <button class="btn btn-primary" ng-click="leafletmap.getrndQuestion();">7 Merveilles du monde</button>
-    <button class="btn btn-warning" >Jeu personnalisé</button>
+    <button class="btn btn-primary" ng-click="leafletmap.ChangeToApiFile(); leafletmap.getrndQuestion();">7 Merveilles du monde</button>
+    <button class="btn btn-warning" ng-click="leafletmap.ChangeToApiForm(); leafletmap.getrndQuestion();">Jeu personnalisé</button>
     <button class="btn btn-success" ng-click="leafletmap.resetquestion();">Re Jouer</button>
     
     <br><br>
+   <!-- <div class="jumbotron text-center">
+            <span class="glyphicon glyphicon-repeat spinner" ng-show="leafletmap.loading"></span>
+            <p>Loading...</p>
+    </div>-->
     <div class="jumbotron text-center" ng-show="leafletmap.rndquestion">
         <p ng-if="leafletmap.chance==null" class="input-red">{{leafletmap.rndquestion}}</p>
         <p class="input-green">{{leafletmap.chance}}</p>

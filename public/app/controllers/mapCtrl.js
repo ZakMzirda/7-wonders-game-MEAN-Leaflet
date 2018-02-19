@@ -7,7 +7,7 @@ angular.module('mapControllers', [])
 	$scope.crdx=[];
 	$scope.crdy=[];
 	$scope.ids=[];
-
+	$scope.ApiCall='';
 	$scope.donnee=null;
 	var info =this;//pour pouvoir recuperer les donnes a l'interieur des fonctions et les utiliser dans les pages html
 
@@ -81,11 +81,18 @@ angular.module('mapControllers', [])
 	}
 	
 	info.nbrofclick = 0;
-	//info.i=0;
+	
+	this.ChangeToApiForm=function changeApiForm(){
+		$scope.ApiCall='GetQuestionsFromForm';
+	}
+	this.ChangeToApiFile=function changeApiFile(){
+		$scope.ApiCall='GetQuestionsFromFile';
+	}
+
 	this.getrndQuestion=function Getrndquestion(){
 		info.rndquestion="";
-		$http.get('api/GetQuestionsFromFile').success(function (response) {
-			
+
+		$http.get('api/'+$scope.ApiCall).success(function (response) {
 			var taille = response.maquestion.length;
 			var randomvalue = Math.floor(Math.random() * taille)
 			for(var i =0; i<taille; i++){
@@ -100,9 +107,6 @@ angular.module('mapControllers', [])
 			var randomQuestion_crdy = $scope.crdy[randomvalue];
 			var id = $scope.ids[randomvalue];
 		
-			//console.log(randomQuestion);
-			//console.log(randomQuestion_crdx);
-			//console.log(randomQuestion_crdy);
 			function CalculDistance(e){
 				var score = 100;
 				//var i = 0;
@@ -143,9 +147,6 @@ angular.module('mapControllers', [])
 
 				//Mettre le score dans la base de données
 				$http.get('/api/addScore/'+id).success(function (response) {
-					//$scope.getscore=response.les_scores
-					//console.log("response "+" "+$scope.getscore);
-					
 						$scope.donnee=response;
 						$scope.donnee.les_scores=score;
 						console.log('le score dans get '+score);
@@ -154,13 +155,10 @@ angular.module('mapControllers', [])
 					})
 						
 				})
-				//i++;
-				//console.log('i = '+i);	
+					
 			}
 			info.rndquestion=randomQuestion;
 			
-			//console.log(info.nbrofclick);
-
 			if(info.nbrofclick>2){
 				info.chance=null;
 				info.nbrofclick=1;
