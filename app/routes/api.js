@@ -9,6 +9,7 @@ module.exports = function(router) {
         question.laquestion = req.body.laquestion; // Save username from request to User object
         question.coordonnee_x = req.body.coordonnee_x; // Save password from request to User object
         question.coordonnee_y = req.body.coordonnee_y; // Save email from request to User object
+
         question.les_scores=0;
         
             if(req.body.laquestion==null || req.body.laquestion=='' || req.body.coordonnee_x==null || req.body.coordonnee_x=='' || req.body.coordonnee_y==null || req.body.coordonnee_y==''){
