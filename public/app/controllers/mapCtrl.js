@@ -84,7 +84,7 @@ angular.module('mapControllers', [])
 	//info.i=0;
 	this.getrndQuestion=function Getrndquestion(){
 		info.rndquestion="";
-		$http.get('api/GetQuestion').success(function (response) {
+		$http.get('api/GetQuestionsFromFile').success(function (response) {
 			
 			var taille = response.maquestion.length;
 			var randomvalue = Math.floor(Math.random() * taille)

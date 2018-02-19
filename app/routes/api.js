@@ -69,7 +69,7 @@ module.exports = function(router) {
         
    });
 
-    router.get('/GetQuestion', function(req, res) {
+    router.get('/GetQuestionsFromFile', function(req, res) {
         QuestionFile.find({}, function(err, maquestion){
 
 
@@ -83,6 +83,22 @@ module.exports = function(router) {
      
         });
     });
+    router.get('/GetQuestionsFromForm', function(req, res) {
+        QuestionForm.find({}, function(err, maquestion){
+
+
+            if(err){
+                res.json({success: false, message :'Erreur(!) sur la recuperation des données'});
+
+            }else{
+                res.json({success: true, message :'Recuperation des données avec succès', maquestion});
+
+            }
+     
+        });
+    });
+
+
     return router;
 }
     

@@ -41,18 +41,31 @@ mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
                     }else{
                         var jsonData = data;
                         var jsonParsed = JSON.parse(jsonData);
+                        var compteur=0;
                         for(var i =0; i<jsonParsed.Questions.length;i++){
+                            
                             var question = new Question();
                             question.laquestion = jsonParsed.Questions[i].laquestion; 
                             question.coordonnee_x = jsonParsed.Questions[i].coordonnee_x; 
                             question.coordonnee_y = jsonParsed.Questions[i].coordonnee_y;
                             question.les_scores=0;
-                            question.save();
+                            question.save(function(err){
+                                if(err){
+                                    console.log('############### Vous avez une duplication des questions! ###############');
+                
+                                }else{
+                                    console.log('>>>> Question ajoutée! <<<<');
+                                }
+                                if(compteur==jsonParsed.Questions.length-1){
+                                    console.log('\nFin de chargement!');
+                                }
+                                compteur++;
+
+                            });
                         }
-                        console.log('Chargement réussi');
+                        console.log('\nChargement...\n');
                     }
                  }); 
-              
             }
             
     });
