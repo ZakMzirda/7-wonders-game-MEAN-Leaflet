@@ -1,4 +1,4 @@
-
+//collection pour des questions questions personnalisées a partir d'un formulaire
 var mongoose = require('mongoose'); // Import Mongoose Package
 var Schema = mongoose.Schema; // Assign Mongoose Schema function to variable
 
@@ -8,4 +8,5 @@ var QuestionSchema = new Schema({
     coordonnee_y : {type : Number, required:true},
     les_scores : {type : [Number]}
 });
-module.exports = mongoose.model('Questions', QuestionSchema, 'Questions');//pour l'exporter vers le serveur
+var mongooseModel= mongoose.model('Custom-Questions', QuestionSchema, 'Custom-Questions');
+module.exports = mongooseModel//pour l'exporter vers le serveur

@@ -1,13 +1,16 @@
-var Question = require('../models/question'); // Import User Model
+var QuestionFile = require('../models/questionFromFile'); // Import User Model
+var QuestionForm = require('../models/questionFromForm'); // Import User Model
 
 module.exports = function(router) {
 
     //creation d'une route http://localhost:8080/users on peut tester le fonctionnement de notre route avec postman  
     router.post('/questions', function(req, res) {
-        var question = new Question(); // Create new question object
-        question.laquestion = req.body.laquestion; 
-        question.coordonnee_x = req.body.coordonnee_x; 
-        question.coordonnee_y = req.body.coordonnee_y; 
+
+        var question = new QuestionForm(); // Create new User object
+        question.laquestion = req.body.laquestion; // Save username from request to User object
+        question.coordonnee_x = req.body.coordonnee_x; // Save password from request to User object
+        question.coordonnee_y = req.body.coordonnee_y; // Save email from request to User object
+
         question.les_scores=0;
         
             if(req.body.laquestion==null || req.body.laquestion=='' || req.body.coordonnee_x==null || req.body.coordonnee_x=='' || req.body.coordonnee_y==null || req.body.coordonnee_y==''){
@@ -27,7 +30,7 @@ module.exports = function(router) {
     router.get('/addScore/:id', function(req, res) {
         var id = req.params.id;
         //res.send('jai reçu : ' +req.score);
-        Question.findOne({_id: id}, function(err, objectTrouve){
+        QuestionFile.findOne({_id: id}, function(err, objectTrouve){
            if(err){
                console.log(err);
                res.json({success: false, message :'Erreur(!) donnée non trouvée'});
@@ -57,7 +60,7 @@ module.exports = function(router) {
        var id = req.params.id;
        console.log(req.body.laquestion);
         //console.log(req);
-       Question.findOne({_id: id}, function(err, objectTrouve){
+        QuestionFile.findOne({_id: id}, function(err, objectTrouve){
            objectTrouve.les_scores=req.body.les_scores;
            objectTrouve.save();
            //res.send(objectTrouve);
@@ -67,7 +70,7 @@ module.exports = function(router) {
    });
 
     router.get('/GetQuestion', function(req, res) {
-        Question.find({}, function(err, maquestion){
+        QuestionFile.find({}, function(err, maquestion){
 
 
             if(err){
@@ -80,8 +83,6 @@ module.exports = function(router) {
      
         });
     });
-
-
     return router;
 }
     
