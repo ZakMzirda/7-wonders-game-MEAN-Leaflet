@@ -16,6 +16,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "fs": "0.0.1-security",
     "mongoose": "^5.0.1",
     "mongoose-double": "0.0.1",
     "morgan": "^1.9.0"
