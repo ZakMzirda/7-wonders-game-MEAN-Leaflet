@@ -4,7 +4,7 @@ module.exports = function(router) {
 
     //creation d'une route http://localhost:8080/users on peut tester le fonctionnement de notre route avec postman  
     router.post('/questions', function(req, res) {
-        var question = new Question(); // Create new User object
+        var question = new Question(); // Create new question object
         question.laquestion = req.body.laquestion; 
         question.coordonnee_x = req.body.coordonnee_x; 
         question.coordonnee_y = req.body.coordonnee_y; 
@@ -23,9 +23,6 @@ module.exports = function(router) {
                 }
             });
         }
-    });
-    router.post('/testcollections', function(req, res) {
-        res.send('cool');
     });
     router.get('/addScore/:id', function(req, res) {
         var id = req.params.id;

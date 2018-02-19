@@ -24,6 +24,13 @@ angular.module('mapControllers', [])
 		
 	});
 
+	var greenIcon = L.icon({
+		iconUrl: 'outils/images/greenmarker.ico',
+		iconSize:     [20, 30], // size of the icon
+		
+	});
+
+
 	//markers
 	L.marker([48.8583701, 2.2922926], {icon: redIcon}).addTo(mymap)
 		.bindPopup("La tour eiffel").openPopup();
@@ -43,6 +50,21 @@ angular.module('mapControllers', [])
 	L.marker([20.6842849, -88.5699713], {icon: redIcon}).addTo(mymap);
 	//Le Taj Mahal
 	L.marker([27.1750151, 78.0399665], {icon: redIcon}).addTo(mymap);
+
+	// Mont Kilimandjaro
+	L.marker([-3.0674245, 37.3381177], {icon: greenIcon}).addTo(mymap);
+	//Le lac Retba
+	L.marker([14.8417276, -17.2453492], {icon: greenIcon}).addTo(mymap);
+	//le Parc des Tsingy de Bemaraha
+	L.marker([-18.89767, 44.8276213], {icon: greenIcon}).addTo(mymap);
+	//Piton de la Fournaise
+	L.marker([-21.2494278, 55.6762222], {icon: greenIcon}).addTo(mymap);
+	//le Lac Turkana
+	L.marker([3.4561582, 35.1471546], {icon: greenIcon}).addTo(mymap);
+	//Les Cascades de Hammam Chellala 
+	L.marker([36.4599982, 7.2524904], {icon: greenIcon}).addTo(mymap);
+	//La vallée du récif de la Mer rouge
+	L.marker([19.1471325, 23.4898441], {icon: greenIcon}).addTo(mymap);
 
 	//fonction pour avoir le nom de ville avec un click & les coordonnées de l'endroit
 	var popup = L.popup();

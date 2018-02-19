@@ -25,7 +25,7 @@ mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
     if (err) {
         console.log('Non connecté à la base de données: ' + err); 
     } else {
-        fs.readFile(__dirname+'/public/outils/files/7-merveilles-du-monde.json',
+        fs.readFile(__dirname+'/public/outils/files/7-merveilles-Afrique.json',
         // callback function that is called when reading file is done
 
         function(err, data) {		
