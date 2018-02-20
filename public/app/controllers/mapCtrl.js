@@ -81,11 +81,13 @@ angular.module('mapControllers', [])
 	}
 	
 	info.nbrofclick = 0;
-	
+	info.showHide=true;
 	this.ChangeToApiForm=function changeApiForm(){
 		$scope.ApiCall='GetQuestionsFromForm';
+		info.showHide=false;
 	}
 	this.ChangeToApiFile=function changeApiFile(){
+		info.showHide=false;
 		$scope.ApiCall='GetQuestionsFromFile';
 	}
 
@@ -177,6 +179,7 @@ angular.module('mapControllers', [])
 		info.chance=null;
 		info.randomQuestion=null;
 		info.nbrofclick=0;
+		info.showHide=true;
 	}
 	
 	mymap.on('click', onMapClick);
