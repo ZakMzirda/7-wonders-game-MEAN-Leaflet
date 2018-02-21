@@ -102,6 +102,20 @@ angular.module('mapControllers', [])
 				$scope.ids[i]=response.maquestion[i]._id;
 			}
 			
+			//conversion en base64 de l'image 
+			var imgdata =response.maquestion[0].merveille_image.data;
+			var binary = '';
+			var bytes = new Uint8Array(imgdata);
+			var len = bytes.byteLength;
+			for (var i = 0; i < len; i++) {
+				binary += String.fromCharCode( bytes[ i ] );
+			}
+			info.limage=btoa(binary);
+			console.log(info.limage);
+			/***************************************************************/
+			
+
+
 			var randomQuestion = $scope.question[randomvalue];
 			var randomQuestion_crdx = $scope.crdx[randomvalue];
 			var randomQuestion_crdy = $scope.crdy[randomvalue];
@@ -173,9 +187,10 @@ angular.module('mapControllers', [])
 
 		mymap.on('click', Getrndquestion);
 	}
+	
 	this.resetquestion=function resetQuestion(){
 		info.chance=null;
-		info.randomQuestion=null;
+		info.rndquestion='';
 		info.nbrofclick=0;
 	}
 	

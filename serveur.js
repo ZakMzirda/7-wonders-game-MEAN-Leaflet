@@ -7,20 +7,17 @@ var bodyParser = require('body-parser'); // Charge le middleware de gestion des 
 var router = express.Router(); // Invoque le routeur express
 var appRoutes = require('./app/routes/api')(router); // Importer les points de terminaison
 var path = require('path'); // Import du module path
-var fs = require('fs');
+var fs = require('fs');//charger le fichier json
+
 
 var Question = require('./app/models/questionFromFile');
-
-//var passport = require('passport'); // Express-compatible authentication middleware for Node.js.
-//var social = require('./app/passport/passport')(app, passport); // Import passport.js End Points/API
+var imgPath = __dirname+'/public/outils/images/Colisee-Rome.jpg';
 
 app.use(morgan('dev')); // Active le middleware de logging
 app.use(bodyParser.json()); // Active le Body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 app.use(express.static(__dirname + '/public')); // Autoriser le front end à accéder au dossier public
 app.use('/api', appRoutes); // Assign name to end points (e.g., '/api/management/', '/api/users' ,etc. )
-
-
 
 
 mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
@@ -45,13 +42,14 @@ mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
                         for(var i =0; i<jsonParsed.Questions.length;i++){
                             
                             var question = new Question();
+                            question.merveille_image=fs.readFileSync(imgPath);
                             question.laquestion = jsonParsed.Questions[i].laquestion; 
-                            question.coordonnee_x = jsonParsed.Questions[i].coordonnee_x; 
-                            question.coordonnee_y = jsonParsed.Questions[i].coordonnee_y;
+                            question.coordonnee_x = jsonParsed.Questions[i].coordonnee_x;
+                            question.coordonnee_y = jsonParsed.Questions[i].coordonnee_y;  
                             question.les_scores=0;
                             question.save(function(err){
                                 if(err){
-                                    console.log('############### Vous avez une duplication des questions! ###############');
+                                    console.log('############### Question non chargée! ###############');
                 
                                 }else{
                                     console.log('>>>> Question ajoutée! <<<<');
@@ -86,9 +84,7 @@ app.listen(port, function() {
     console.log('Exécution du serveur sur le port ' + port); // Ecoute sur le port qu'on a configuré
 });
 
-//chargement base
-
-
+//reglage des boutons
 //photo/description https://fr.wikipedia.org/wiki/Sept_Merveilles_du_monde#Le_Phare
 //3 collections (2 alea) + 1 perso
 //afficher la distance

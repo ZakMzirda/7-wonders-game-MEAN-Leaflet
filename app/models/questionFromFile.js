@@ -6,7 +6,9 @@ var QuestionSchema = new Schema({
     laquestion : {type : String, required:true, unique:true},
     coordonnee_x : {type : Number, required:true},
     coordonnee_y : {type : Number, required:true},
-    les_scores : {type : [Number]}
+    les_scores : {type : [Number]},
+    merveille_image : {type : Buffer}
+
 });
 var mongooseModel= mongoose.model('Seven-Wonders', QuestionSchema, 'Seven-Wonders');
 module.exports = mongooseModel//pour l'exporter vers le serveur

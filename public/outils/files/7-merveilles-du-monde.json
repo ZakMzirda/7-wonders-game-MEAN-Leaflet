@@ -1,63 +1,56 @@
 {
     "Questions":[
-    {
-        "laquestion" : "Ou se trouve la grande muraille de chine ?",
-        "coordonnee_x" : 40.4319077,
-        "coordonnee_y" : 116.5681862,
-        "description" : "",
-        "image" : ""
-    },
+        {
+            "laquestion" : "Ou se trouve la grande muraille de chine ?",
+            "coordonnee_x" : 40.4319077,
+            "coordonnee_y" : 116.5681862,
+            "description" : ""
+        },
 
-    
-    {
-        "laquestion" : "Ou se trouve le colisée de rome ?",
-        "coordonnee_x" : 41.8902102,
-        "coordonnee_y" : 12.4900422,
-        "description" : "",
-        "image" : ""
-    },
+        
+        {
+            "laquestion" : "Ou se trouve le colisée de rome ?",
+            "coordonnee_x" : 41.8902102,
+            "coordonnee_y" : 12.4900422,
+            "description" : ""
+        },
 
-    
-    {
-        "laquestion" : "Ou se trouve pétra ?",
-        "coordonnee_x" : 30.3284544,
-        "coordonnee_y" : 35.4421735,
-        "description" : "",
-        "image" : ""
-    },
+        
+        {
+            "laquestion" : "Ou se trouve pétra ?",
+            "coordonnee_x" : 30.3284544,
+            "coordonnee_y" : 35.4421735,
+            "description" : ""
+        },
 
-    
-    {
-        "laquestion" : "Ou se trouve Le Christ Rédempteur ?",
-        "coordonnee_x" : -22.951916,
-        "coordonnee_y" : -43.2126759,
-        "description" : "",
-        "image" : ""
-    },
+        
+        {
+            "laquestion" : "Ou se trouve Le Christ Rédempteur ?",
+            "coordonnee_x" : -22.951916,
+            "coordonnee_y" : -43.2126759,
+            "description" : ""
+        },
 
-    {
-        "laquestion" : "Ou se trouve Machu Picchu ?",
-        "coordonnee_x" : -13.1631412,
-        "coordonnee_y" : -72.5471516,
-        "description" : "",
-        "image" : ""
-    },
-    
-    {
-        "laquestion" : "Ou se trouve Chichen Itza ?",
-        "coordonnee_x" : 20.6842849,
-        "coordonnee_y" : -88.5699713,
-        "description" : "",
-        "image" : ""
-    },
+        {
+            "laquestion" : "Ou se trouve Machu Picchu ?",
+            "coordonnee_x" : -13.1631412,
+            "coordonnee_y" : -72.5471516,
+            "description" : ""
+        },
+        
+        {
+            "laquestion" : "Ou se trouve Chichen Itza ?",
+            "coordonnee_x" : 20.6842849,
+            "coordonnee_y" : -88.5699713,
+            "description" : ""
+        },
 
-    
-    {
-        "laquestion" : "Ou se trouve Le Taj Mahal ?",
-        "coordonnee_x" : 27.1750151,
-        "coordonnee_y" : 78.0399665,
-        "description" : "",
-        "image" : ""
-    }
-]
+        
+        {
+            "laquestion" : "Ou se trouve Le Taj Mahal ?",
+            "coordonnee_x" : 27.1750151,
+            "coordonnee_y" : 78.0399665,
+            "description" : ""
+        }
+    ]
 }
