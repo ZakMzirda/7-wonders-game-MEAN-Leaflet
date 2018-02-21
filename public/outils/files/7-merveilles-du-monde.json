@@ -1,55 +1,55 @@
 {
     "Questions":[
         {
-            "laquestion" : "Ou se trouve la grande muraille de chine ?",
-            "coordonnee_x" : 40.4319077,
-            "coordonnee_y" : 116.5681862,
+            "laquestion" : "Ou se trouve la pyramide de Khéops ?",
+            "coordonnee_x" : 29.9792345,
+            "coordonnee_y" : 31.1320132,
             "description" : ""
         },
 
         
         {
-            "laquestion" : "Ou se trouve le colisée de rome ?",
-            "coordonnee_x" : 41.8902102,
-            "coordonnee_y" : 12.4900422,
+            "laquestion" : "Ou se trouve les jardins suspendus de Babylone ?",
+            "coordonnee_x" : 48.9198611,
+            "coordonnee_y" : 2.3410332,
             "description" : ""
         },
 
         
         {
-            "laquestion" : "Ou se trouve pétra ?",
-            "coordonnee_x" : 30.3284544,
-            "coordonnee_y" : 35.4421735,
+            "laquestion" : "Ou se trouve la statue de Zeus ?",
+            "coordonnee_x" : 37.6384588,
+            "coordonnee_y" : 21.6276909,
             "description" : ""
         },
 
         
         {
-            "laquestion" : "Ou se trouve Le Christ Rédempteur ?",
-            "coordonnee_x" : -22.951916,
-            "coordonnee_y" : -43.2126759,
+            "laquestion" : "Ou se trouve le mausolée d'Halicarnasse ?",
+            "coordonnee_x" : 37.038132,
+            "coordonnee_y" : 27.4221962,
             "description" : ""
         },
 
         {
-            "laquestion" : "Ou se trouve Machu Picchu ?",
-            "coordonnee_x" : -13.1631412,
-            "coordonnee_y" : -72.5471516,
+            "laquestion" : "Ou se trouve le Temple d'Artémis ?",
+            "coordonnee_x" : 37.9493601,
+            "coordonnee_y" : 27.3616675,
             "description" : ""
         },
         
         {
-            "laquestion" : "Ou se trouve Chichen Itza ?",
-            "coordonnee_x" : 20.6842849,
-            "coordonnee_y" : -88.5699713,
+            "laquestion" : "Ou se trouve le Colosse de Rhodes ?",
+            "coordonnee_x" : 36.4510656,
+            "coordonnee_y" : 28.2236446,
             "description" : ""
         },
 
         
         {
-            "laquestion" : "Ou se trouve Le Taj Mahal ?",
-            "coordonnee_x" : 27.1750151,
-            "coordonnee_y" : 78.0399665,
+            "laquestion" : "Ou se trouve le Phare d'Alexandrie ?",
+            "coordonnee_x" : 48.9671362,
+            "coordonnee_y" : 2.3423655,
             "description" : ""
         }
     ]

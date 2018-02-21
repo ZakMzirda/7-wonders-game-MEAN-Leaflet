@@ -2,7 +2,8 @@
     <h1>Jeu avec Leaflet</h1>
 </div>
 <body>
-    <input type="button" value="7 Merveilles du monde" class="btn btn-primary" ng-show="leafletmap.showHide" ng-click="leafletmap.ChangeToApiFile(); leafletmap.getrndQuestion();">
+    <input type="button" value="7 Merveilles du monde" class="btn btn-primary" ng-show="leafletmap.showHide" 
+    ng-click="leafletmap.ChangeToApiFile(); leafletmap.getrndQuestion();">
     <button class="btn btn-warning" ng-click="leafletmap.ChangeToApiForm(); leafletmap.getrndQuestion();">Jeu personnalisé</button>
     <button class="btn btn-success" ng-show="!leafletmap.showHide" ng-click="leafletmap.resetquestion();">Re Jouer</button>
     
@@ -15,8 +16,7 @@
     <div class="jumbotron text-center" ng-show="leafletmap.rndquestion" ng-if="!leafletmap.showHide">
         <p ng-if="leafletmap.chance==null" class="input-red">{{leafletmap.rndquestion}}</p>
         <p class="input-green">{{leafletmap.chance}}</p>
-        <p>{{leafletmap.limage}}</p>
-        <img src="data:image/jpg;base64,{{leafletmap.limage}}">
+        <!--<img ng-src="data:image/jpg;base64,{{leafletmap.limage}}">-->
     </div>
     
     <br>
