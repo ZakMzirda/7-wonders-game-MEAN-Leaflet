@@ -90,12 +90,18 @@ angular.module('mapControllers', [])
 	info.nbrofclick = 0;
 	info.showHide=true;
 	this.ChangeToApiForm=function changeApiForm(){
+		
 		$scope.ApiCall='GetQuestionsFromForm';
 		info.showHide=false;
+		info.showimage=false;
+
 	}
 	this.ChangeToApiFile=function changeApiFile(){
-		info.showHide=false;
+		
 		$scope.ApiCall='GetQuestionsFromFile';
+		info.showHide=false;
+		info.showimage=true;
+
 	}
 	this.resetquestion=function resetQuestion(){
 		info.rndquestion='';
@@ -114,7 +120,10 @@ angular.module('mapControllers', [])
 				$scope.crdx[i]=response.maquestion[i].coordonnee_x;
 				$scope.crdy[i]=response.maquestion[i].coordonnee_y;
 				$scope.ids[i]=response.maquestion[i]._id;
-				$scope.lesimagesdata[i]=response.maquestion[i].merveille_image.data;
+				if($scope.ApiCall=='GetQuestionsFromFile'){
+					
+					$scope.lesimagesdata[i]=response.maquestion[i].merveille_image.data;
+				}
 			}
 			
 			
@@ -203,7 +212,7 @@ angular.module('mapControllers', [])
 			.setLatLng(e.latlng)
 			.setContent($scope.chance+' distance '+$scope.distance+" ("+DistanceEnKM+")"+" Km")
 			.openOn(mymap);
-			
+
 			if($scope.essais==4 && $scope.chance=='Excellent!!'){
 				popup
 				.setLatLng(e.latlng)
