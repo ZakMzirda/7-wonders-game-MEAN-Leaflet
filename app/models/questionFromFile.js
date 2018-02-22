@@ -7,7 +7,8 @@ var QuestionSchema = new Schema({
     coordonnee_x : {type : Number, required:true},
     coordonnee_y : {type : Number, required:true},
     les_scores : {type : [Number]},
-    merveille_image : {type : Buffer}
+    merveille_image : {type : Buffer},
+    image_nom:{type : String}
 
 });
 var mongooseModel= mongoose.model('Seven-Wonders', QuestionSchema, 'Seven-Wonders');

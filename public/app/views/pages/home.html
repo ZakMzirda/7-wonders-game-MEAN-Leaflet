@@ -14,10 +14,10 @@
             <span class="glyphicon glyphicon-repeat spinner" ng-show="leafletmap.loading"></span>
             <p>Loading...</p>
     </div>-->
-    <div class="jumbotron text-center" ng-show="leafletmap.rndquestion" ng-if="!leafletmap.showHide">
+    <div class="jumbotron text-center" class="img-thumbnail" ng-show="leafletmap.rndquestion" ng-if="!leafletmap.showHide">
         <p ng-if="leafletmap.chance==null" class="input-red">{{leafletmap.rndquestion}}</p>
         <p class="input-green">{{leafletmap.chance}}</p>
-        <!--<img ng-src="data:image/jpg;base64,{{leafletmap.limage}}">-->
+        <img class="imagestyle" class="img-thumbnail" ng-src="data:image/jpg;base64,{{leafletmap.limage}}">
     </div>
     
     <br>

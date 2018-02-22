@@ -8,6 +8,7 @@ angular.module('mapControllers', [])
 	$scope.crdx=[];
 	$scope.crdy=[];
 	$scope.ids=[];
+	$scope.lesimagesdata=[];
 	$scope.ApiCall='';
 	$scope.essais=0;
 	$scope.donnee=null;
@@ -34,10 +35,6 @@ angular.module('mapControllers', [])
 
 
 	//markers
-	/*L.marker([48.8583701, 2.2922926], {icon: redIcon}).addTo(mymap)
-		.bindPopup("La tour eiffel").openPopup();
-	L.marker([48.8583701, 2.2922926], {icon: redIcon}).addTo(mymap);*/
-
 	//merveilles du monde
 	//la pyramide de Khéops
 	L.marker([29.9792345, 31.1320132], {icon: redIcon}).addTo(mymap).bindPopup("pyramide de Khéops").openPopup();
@@ -117,37 +114,34 @@ angular.module('mapControllers', [])
 				$scope.crdx[i]=response.maquestion[i].coordonnee_x;
 				$scope.crdy[i]=response.maquestion[i].coordonnee_y;
 				$scope.ids[i]=response.maquestion[i]._id;
+				$scope.lesimagesdata[i]=response.maquestion[i].merveille_image.data;
 			}
 			
-			//conversion en base64 de l'image 
-			/*var imgdata =response.maquestion[0].merveille_image.data;
-			//console.log(imgdata);
-			var binary = '';
-			var bytes = new Uint8Array(imgdata);
-			var len = bytes.byteLength;
-			for (var i = 0; i < len; i++) {
-				binary += String.fromCharCode( bytes[ i ] );
-			}
-			info.limage=btoa(binary);*/
-			//console.log(info.limage);
+			
 			/***************************************************************/
 			var randomQuestion = $scope.question[$scope.randomvalue];
 			var randomQuestion_crdx = $scope.crdx[$scope.randomvalue];
 			var randomQuestion_crdy = $scope.crdy[$scope.randomvalue];
 			var id = $scope.ids[$scope.randomvalue];
+			var imgdata =$scope.lesimagesdata[$scope.randomvalue];
+
+			//conversion en base64 de l'image 
+		
+			//console.log(imgdata);
+			var binary = '';
+			var bytes = new Uint8Array(imgdata);
+			var len = bytes.byteLength;
+			for (var i = 0; i < len; i++) {
+				binary += String.fromCharCode(bytes[i]);
+			}
+			info.limage=btoa(binary);
+			/*********************/
 			
 			info.rndquestion=randomQuestion;
 			
-
-			/*if(info.nbrofclick>2){
-				info.chance=null;
-				info.nbrofclick=1;
-			}*/		
 			
 		})
-		//info.nbrofclick++;
-
-		//mymap.on('click', Getrndquestion);
+		
 	}//fin getrndquestion
 	
 	function CalculDistance(e){
@@ -158,8 +152,8 @@ angular.module('mapControllers', [])
 		var lat2=$scope.crdx[$scope.randomvalue];
 		var lon1=e.latlng.lng;
 		var lon2=$scope.crdy[$scope.randomvalue];
-		//distance ne km
-		var R = 6371; // metres
+		//distance en km
+		var R = 6371; // km
 		var φ1 = lat1*(Math.PI/180);
 		var φ2 = lat2*(Math.PI/180);
 		var Δφ = (lat2-lat1)*(Math.PI/180);
@@ -172,50 +166,85 @@ angular.module('mapControllers', [])
 
 		DistanceEnKM = R * c;
 		//
+		var k=4;
+		var nbressais=k-$scope.essais;
 		if($scope.distance <= 0.4){
 			$scope.chance='Excellent!!';
 		}
 		if($scope.distance > 0.4 && $scope.distance<=0.5){
-			score=score-5;
-			$scope.chance='Vous êtes très proche!';
+			//score=score-5;
+			$scope.chance='Vous êtes très proche! '+nbressais+' essais';
 		}
 		if($scope.distance > 0.5 && $scope.distance<=0.6){
-			score=score-10;
+			//score=score-10;
 			
-			$scope.chance='Vous êtes proche!';
+			$scope.chance='Vous êtes proche! '+nbressais+' essais';
 		}
 		if($scope.distance>0.6 && $scope.distance <= 0.7){
-			score=score-30;
+			//score=score-30;
 			
-			$scope.chance='Vous êtes un peu loin là!';					
+			$scope.chance='Vous êtes un peu loin! '+nbressais+' essais';					
 		}
 		if($scope.distance>0.7 && $scope.distance <= 0.9){
-			score=score-80;
-			$scope.chance='Vous êtes loin!';					
+			//score=score-80;
+			$scope.chance='Vous êtes loin! '+nbressais+' essais';					
 		}
 		if($scope.distance>0.9){
-			score=score-100;
-			$scope.chance='Oulala trop loin!!';
-			console.log($scope.chance);			
+			//score=score-100;
+			$scope.chance='Trop loin!! il vous reste '+nbressais+' essais';
+			if(nbressais==0){
+				$scope.chance='Vous-avez perdu! ';
+			}
 		}
-		
-		if($scope.distance && $scope.chance && info.showHide==false && $scope.essais!=4){
+
+		//5 essais 
+		if($scope.distance && $scope.chance && info.showHide==false && $scope.essais!=6){
 			popup
 			.setLatLng(e.latlng)
 			.setContent($scope.chance+' distance '+$scope.distance+" ("+DistanceEnKM+")"+" Km")
 			.openOn(mymap);
-			if(score==100 && $scope.essais<4){
-				$scope.essais=3;
+			
+			if($scope.essais==4 && $scope.chance=='Excellent!!'){
 				popup
 				.setLatLng(e.latlng)
-				.setContent('Trouvé! Vous êtes rapide!! '+score+"/100")
+				.setContent('Trouvé! mais nul! votre socre est 1/10')
 				.openOn(mymap);
 			}
 			
-			if($scope.essais==3){
+			if($scope.essais==1 && $scope.chance=='Excellent!!'){
+				popup
+				.setLatLng(e.latlng)
+				.setContent('Trouvé! votre score est 8/10')
+				.openOn(mymap);
+				$scope.essais=$scope.essais+3;
+			}
+
+			if($scope.essais==2 && $scope.chance=='Excellent!!'){
+				popup
+				.setLatLng(e.latlng)
+				.setContent('Trouvé! pas mal votre score est 5/10')
+				.openOn(mymap);
+				$scope.essais=$scope.essais+2;
+			}
+			if($scope.essais==3 && $scope.chance=='Excellent!!'){
+				popup
+				.setLatLng(e.latlng)
+				.setContent('Trouvé! vous pouvez faire mieux! votre socre est 3/10')
+				.openOn(mymap);
+				$scope.essais=$scope.essais+1;
+			}
+			
+			if($scope.essais==0 && $scope.chance=='Excellent!!'){
+				popup
+				.setLatLng(e.latlng)
+				.setContent($scope.chance+' Trouvé! Vous êtes rapide!! votre score est 10/10')
+				.openOn(mymap);
+				$scope.essais=$scope.essais+4;
+			}
+			if($scope.essais==5){
 				popup
 			.setLatLng(e.latlng)
-			.setContent('Cliquez sur Rejouer pour lancer une autre partie!')
+			.setContent('Cliquez sur Rejouer pour lancer une nouvelle partie!')
 			.openOn(mymap);
 			}
 			$scope.essais++;
@@ -239,8 +268,5 @@ angular.module('mapControllers', [])
 	
 
 	mymap.on('click', CalculDistance);
-
-	//mymap.on('click', onMapClick);
 	
-
 });

@@ -4,6 +4,7 @@
             "laquestion" : "Ou se trouve la pyramide de Khéops ?",
             "coordonnee_x" : 29.9792345,
             "coordonnee_y" : 31.1320132,
+            "image_nom" : "Pyramide-de-Kheops",
             "description" : ""
         },
 
@@ -12,6 +13,7 @@
             "laquestion" : "Ou se trouve les jardins suspendus de Babylone ?",
             "coordonnee_x" : 33.1401745,
             "coordonnee_y" : 39.2219768,
+            "image_nom" : "Jardins-suspendus-de-Babylone",
             "description" : ""
         },
 
@@ -20,6 +22,7 @@
             "laquestion" : "Ou se trouve la statue de Zeus ?",
             "coordonnee_x" : 37.6384588,
             "coordonnee_y" : 21.6276909,
+            "image_nom" : "Statue-chryselephantine-de-Zeus",
             "description" : ""
         },
 
@@ -28,6 +31,7 @@
             "laquestion" : "Ou se trouve le mausolée d'Halicarnasse ?",
             "coordonnee_x" : 37.038132,
             "coordonnee_y" : 27.4221962,
+            "image_nom" : "Mausolee-dHalicarnasse",
             "description" : ""
         },
 
@@ -35,6 +39,7 @@
             "laquestion" : "Ou se trouve le Temple d'Artémis ?",
             "coordonnee_x" : 37.9493601,
             "coordonnee_y" : 27.3616675,
+            "image_nom" : "Temple-dArtemis",
             "description" : ""
         },
         
@@ -42,6 +47,7 @@
             "laquestion" : "Ou se trouve le Colosse de Rhodes ?",
             "coordonnee_x" : 36.4510656,
             "coordonnee_y" : 28.2236446,
+            "image_nom" : "Colosse-de-Rhodes",
             "description" : ""
         },
 
@@ -50,6 +56,7 @@
             "laquestion" : "Ou se trouve le Phare d'Alexandrie ?",
             "coordonnee_x" : 31.2240349,
             "coordonnee_y" : 29.8148008,
+            "image_nom" : "Phare-dAlexandrie",
             "description" : ""
         }
     ]

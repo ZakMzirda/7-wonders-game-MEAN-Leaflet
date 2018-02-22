@@ -11,14 +11,13 @@ var fs = require('fs');//charger le fichier json
 
 
 var Question = require('./app/models/questionFromFile');
-var imgPath = __dirname+'/public/outils/images/Colisee-Rome.jpg';
+
 
 app.use(morgan('dev')); // Active le middleware de logging
 app.use(bodyParser.json()); // Active le Body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 app.use(express.static(__dirname + '/public')); // Autoriser le front end à accéder au dossier public
 app.use('/api', appRoutes); // Assign name to end points (e.g., '/api/management/', '/api/users' ,etc. )
-
 
 mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
     if (err) {
@@ -39,10 +38,19 @@ mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
                         var jsonData = data;
                         var jsonParsed = JSON.parse(jsonData);
                         var compteur=0;
+                        var image=['Pyramide-de-Kheops','Jardins-suspendus-de-Babylone','Statue-chryselephantine-de-Zeus','Mausolee-dHalicarnasse',
+                                    'Temple-dArtemis','Colosse-de-Rhodes','Phare-dAlexandrie'];
+                        
                         for(var i =0; i<jsonParsed.Questions.length;i++){
-                            
+                           
                             var question = new Question();
-                            question.merveille_image=fs.readFileSync(imgPath);
+                            var imgPath = __dirname+'/public/outils/images/'+image[i]+'.jpg';
+                            for(var j=0;j<image.length;j++){
+                                if(image[j]==jsonParsed.Questions[i].image_nom){
+                                    question.merveille_image=fs.readFileSync(imgPath);
+                                }
+                            }
+                            
                             question.laquestion = jsonParsed.Questions[i].laquestion; 
                             question.coordonnee_x = jsonParsed.Questions[i].coordonnee_x;
                             question.coordonnee_y = jsonParsed.Questions[i].coordonnee_y;  
@@ -50,7 +58,6 @@ mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
                             question.save(function(err){
                                 if(err){
                                     console.log('############### Question non chargée! ###############');
-                
                                 }else{
                                     console.log('>>>> Question ajoutée! <<<<');
                                 }

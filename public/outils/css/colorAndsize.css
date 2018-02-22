@@ -9,6 +9,13 @@
     width: 1155px; height: 600px;
 }
 
+/*style image*/
+.imagestyle{
+    height: 200px;
+    width: 50%;
+    background-color: powderblue;
+}
+
 /* style popup*/
 .custom .leaflet-popup-tip,
 .custom .leaflet-popup-content-wrapper {
