@@ -10,8 +10,8 @@
         
         {
             "laquestion" : "Ou se trouve les jardins suspendus de Babylone ?",
-            "coordonnee_x" : 48.9198611,
-            "coordonnee_y" : 2.3410332,
+            "coordonnee_x" : 33.1401745,
+            "coordonnee_y" : 39.2219768,
             "description" : ""
         },
 
@@ -48,8 +48,8 @@
         
         {
             "laquestion" : "Ou se trouve le Phare d'Alexandrie ?",
-            "coordonnee_x" : 48.9671362,
-            "coordonnee_y" : 2.3423655,
+            "coordonnee_x" : 31.2240349,
+            "coordonnee_y" : 29.8148008,
             "description" : ""
         }
     ]

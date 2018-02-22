@@ -40,19 +40,19 @@ angular.module('mapControllers', [])
 
 	//merveilles du monde
 	//la pyramide de Khéops
-	L.marker([29.9792345, 31.1320132], {icon: redIcon}).addTo(mymap);
+	L.marker([29.9792345, 31.1320132], {icon: redIcon}).addTo(mymap).bindPopup("pyramide de Khéops").openPopup();
 	//les jardins suspendus de Babylone
-	L.marker([48.9198611, 2.3410332], {icon: redIcon}).addTo(mymap);
+	L.marker([33.1401745, 39.2219768], {icon: redIcon}).addTo(mymap).bindPopup("les jardins suspendus de Babylone").openPopup();
 	//la statue de Zeus
-	L.marker([37.6384588, 21.6276909], {icon: redIcon}).addTo(mymap);
+	L.marker([37.6384588, 21.6276909], {icon: redIcon}).addTo(mymap).bindPopup("la statue de Zeus").openPopup();
 	//le mausolée d'Halicarnasse
-	L.marker([37.038132, 27.4221962], {icon: redIcon}).addTo(mymap);
+	L.marker([37.038132, 27.4221962], {icon: redIcon}).addTo(mymap).bindPopup("le mausolée d'Halicarnasse").openPopup();
 	//le Temple d'Artémis
-	L.marker([37.9493601, 27.3616675], {icon: redIcon}).addTo(mymap);
+	L.marker([37.9493601, 27.3616675], {icon: redIcon}).addTo(mymap).bindPopup("le Temple d'Artémis").openPopup();
 	//le Colosse de Rhodes
-	L.marker([36.4510656, 28.2236446], {icon: redIcon}).addTo(mymap);
+	L.marker([36.4510656, 28.2236446], {icon: redIcon}).addTo(mymap).bindPopup("le Colosse de Rhodes").openPopup();
 	//le Phare d'Alexandrie
-	L.marker([48.9671362, 2.3423655], {icon: redIcon}).addTo(mymap);
+	L.marker([31.2240349, 29.8148008], {icon: redIcon}).addTo(mymap).bindPopup("le Phare d'Alexandrie").openPopup();
 
 	//merveilles d'afrique
 	// Mont Kilimandjaro
@@ -70,8 +70,14 @@ angular.module('mapControllers', [])
 	//La vallée du récif de la Mer rouge
 	L.marker([19.1471325, 23.4898441], {icon: greenIcon}).addTo(mymap);
 
+	var PopupOptions =
+        {
+        'maxWidth': '500',
+        'className' : 'custom'
+        }
+	var popup = L.popup(PopupOptions);
+	
 	//fonction pour avoir le nom de ville avec un click & les coordonnées de l'endroit
-	var popup = L.popup();
 	/*function onMapClick(e) {
 		popup
 			.setLatLng(e.latlng)
@@ -114,7 +120,7 @@ angular.module('mapControllers', [])
 			}
 			
 			//conversion en base64 de l'image 
-			var imgdata =response.maquestion[0].merveille_image.data;
+			/*var imgdata =response.maquestion[0].merveille_image.data;
 			//console.log(imgdata);
 			var binary = '';
 			var bytes = new Uint8Array(imgdata);
@@ -122,7 +128,7 @@ angular.module('mapControllers', [])
 			for (var i = 0; i < len; i++) {
 				binary += String.fromCharCode( bytes[ i ] );
 			}
-			info.limage=btoa(binary);
+			info.limage=btoa(binary);*/
 			//console.log(info.limage);
 			/***************************************************************/
 			var randomQuestion = $scope.question[$scope.randomvalue];
@@ -148,42 +154,62 @@ angular.module('mapControllers', [])
 		var score = 100;
 		$scope.distance = Math.sqrt((($scope.crdx[$scope.randomvalue]-e.latlng.lat)*($scope.crdx[$scope.randomvalue]-e.latlng.lat))
 		+(($scope.crdy[$scope.randomvalue]-e.latlng.lng)*($scope.crdy[$scope.randomvalue]-e.latlng.lng)));
-		//console.log('Distance : '+ $scope.distance);
+		var lat1=e.latlng.lat;
+		var lat2=$scope.crdx[$scope.randomvalue];
+		var lon1=e.latlng.lng;
+		var lon2=$scope.crdy[$scope.randomvalue];
+		//distance ne km
+		var R = 6371; // metres
+		var φ1 = lat1*(Math.PI/180);
+		var φ2 = lat2*(Math.PI/180);
+		var Δφ = (lat2-lat1)*(Math.PI/180);
+		var Δλ = (lon2-lon1)*(Math.PI/180);
+
+		var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+				Math.cos(φ1) * Math.cos(φ2) *
+				Math.sin(Δλ/2) * Math.sin(Δλ/2);
+		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+		DistanceEnKM = R * c;
+		//
 		if($scope.distance <= 0.4){
-			$scope.chance='Excellent!! votre score est '+ score +' sur 100';
-			console.log($scope.chance);
+			$scope.chance='Excellent!!';
 		}
 		if($scope.distance > 0.4 && $scope.distance<=0.5){
 			score=score-5;
-			$scope.chance='Bien! votre score est '+ score +' sur 100, presque parfait!';
+			$scope.chance='Vous êtes très proche!';
 		}
 		if($scope.distance > 0.5 && $scope.distance<=0.6){
 			score=score-10;
 			
-			$scope.chance='Vous étiez proche! votre score est '+score+' sur 100, vous pouvez faire mieux';
+			$scope.chance='Vous êtes proche!';
 		}
 		if($scope.distance>0.6 && $scope.distance <= 0.7){
 			score=score-30;
 			
-			$scope.chance='Vous êtes un peu loin là! votre score est '+score +' sur 100';					
+			$scope.chance='Vous êtes un peu loin là!';					
 		}
 		if($scope.distance>0.7 && $scope.distance <= 0.9){
 			score=score-80;
-			$scope.chance='Vous êtes loin! votre score est '+score +' sur 100';					
+			$scope.chance='Vous êtes loin!';					
 		}
 		if($scope.distance>0.9){
 			score=score-100;
-			$scope.chance='Oulala trop loin!! votre score est '+score +' sur 100';
+			$scope.chance='Oulala trop loin!!';
 			console.log($scope.chance);			
 		}
 		
 		if($scope.distance && $scope.chance && info.showHide==false && $scope.essais!=4){
 			popup
 			.setLatLng(e.latlng)
-			.setContent($scope.chance+' distance '+$scope.distance)
+			.setContent($scope.chance+' distance '+$scope.distance+" ("+DistanceEnKM+")"+" Km")
 			.openOn(mymap);
 			if(score==100 && $scope.essais<4){
 				$scope.essais=3;
+				popup
+				.setLatLng(e.latlng)
+				.setContent('Trouvé! Vous êtes rapide!! '+score+"/100")
+				.openOn(mymap);
 			}
 			
 			if($scope.essais==3){

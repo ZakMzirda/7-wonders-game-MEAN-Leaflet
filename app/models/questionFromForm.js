@@ -7,7 +7,6 @@ var QuestionSchema = new Schema({
     coordonnee_x : {type : Number, required:true},
     coordonnee_y : {type : Number, required:true},
     les_scores : {type : [Number]},
-    //merveille_image : {type : String}
 });
 var mongooseModel= mongoose.model('Custom-Questions', QuestionSchema, 'Custom-Questions');
 module.exports = mongooseModel//pour l'exporter vers le serveur

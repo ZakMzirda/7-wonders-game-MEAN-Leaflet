@@ -1,33 +1,14 @@
-var QuestionFile = require('../models/questionFromFile'); // Import User Model
-var QuestionForm = require('../models/questionFromForm'); // Import User Model
-/*var multer = require('multer');
-
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-      cb(null, './uploads/');
-    },
-    filename: function(req, file, cb) {
-      cb(null,file.originalname);
-    }
-  });
-
-var upload = multer({
-    storage : storage
-  });
-  */
-
+var QuestionFile = require('../models/questionFromFile'); 
+var QuestionForm = require('../models/questionFromForm'); 
 
 module.exports = function(router) {
 
-    //creation d'une route http://localhost:8080/users on peut tester le fonctionnement de notre route avec postman  
-    router.post('/questions', /*upload.single('merveille_image'),*/ function(req, res) {
+    router.post('/questions', function(req, res) {
         var question = new QuestionForm(); 
         question.laquestion = req.body.laquestion; 
         question.coordonnee_x = req.body.coordonnee_x; 
-        question.coordonnee_y = req.body.coordonnee_y;
-       
+        question.coordonnee_y = req.body.coordonnee_y;       
         question.les_scores=0;
-        question.merveille_image=req.file.path;
         
             if(req.body.laquestion==null || req.body.laquestion=='' || req.body.coordonnee_x==null || req.body.coordonnee_x=='' || req.body.coordonnee_y==null || req.body.coordonnee_y==''){
                 res.json({success: false, message :'Vous avez oublié un champ'});

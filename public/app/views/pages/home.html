@@ -1,10 +1,11 @@
 <div class="page-header">
-    <h1>Jeu avec Leaflet</h1>
+    <h1>7 Merveilles</h1>
 </div>
 <body>
-    <input type="button" value="7 Merveilles du monde" class="btn btn-primary" ng-show="leafletmap.showHide" 
-    ng-click="leafletmap.ChangeToApiFile(); leafletmap.getrndQuestion();">
-    <button class="btn btn-warning" ng-click="leafletmap.ChangeToApiForm(); leafletmap.getrndQuestion();">Jeu personnalisé</button>
+    <button class="btn btn-primary" ng-show="leafletmap.showHide" 
+    ng-click="leafletmap.ChangeToApiFile(); leafletmap.getrndQuestion();">7 Merveilles du monde</button>
+    <button class="btn btn-warning" ng-show="leafletmap.showHide" 
+    ng-click="leafletmap.ChangeToApiForm(); leafletmap.getrndQuestion();">Jeu personnalisé</button>
     <button class="btn btn-success" ng-show="!leafletmap.showHide" ng-click="leafletmap.resetquestion();">Re Jouer</button>
     
 
