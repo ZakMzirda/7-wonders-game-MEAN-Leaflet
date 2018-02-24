@@ -15,7 +15,7 @@ angular.module('mapControllers', [])
 	var info =this;//pour pouvoir recuperer les donnes a l'interieur des fonctions et les utiliser dans les pages html
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 18,
+		maxZoom: 6,
 		minZoom: 2,
 		id: 'mapbox.streets'
 	}).addTo(mymap);
@@ -33,7 +33,7 @@ angular.module('mapControllers', [])
 		
 	});
 
-
+	/*
 	//markers
 	//merveilles du monde
 	//la pyramide de Khéops
@@ -66,7 +66,7 @@ angular.module('mapControllers', [])
 	L.marker([36.4599982, 7.2524904], {icon: greenIcon}).addTo(mymap);
 	//La vallée du récif de la Mer rouge
 	L.marker([19.1471325, 23.4898441], {icon: greenIcon}).addTo(mymap);
-
+	*/
 	var PopupOptions =
         {
         'maxWidth': '500',
@@ -162,7 +162,7 @@ angular.module('mapControllers', [])
 		var lon1=e.latlng.lng;
 		var lon2=$scope.crdy[$scope.randomvalue];
 		//distance en km
-		var R = 6371; // km
+		var R = 6371; // rayon de la terre en km
 		var φ1 = lat1*(Math.PI/180);
 		var φ2 = lat2*(Math.PI/180);
 		var Δφ = (lat2-lat1)*(Math.PI/180);
@@ -173,32 +173,42 @@ angular.module('mapControllers', [])
 				Math.sin(Δλ/2) * Math.sin(Δλ/2);
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-		DistanceEnKM = R * c;
+		var DistanceEnKM = parseInt(R * c);
 		//
 		var k=4;
 		var nbressais=k-$scope.essais;
-		if($scope.distance <= 0.4){
+		if($scope.distance <= 100){
 			$scope.chance='Excellent!!';
 		}
-		if($scope.distance > 0.4 && $scope.distance<=0.5){
+		if(DistanceEnKM > 100 && DistanceEnKM<=200){
 			//score=score-5;
-			$scope.chance='Vous êtes très proche! '+nbressais+' essais';
+			$scope.chance='Vous êtes très proche! il vous reste '+nbressais+' essais';
+			if(nbressais==0){
+				$scope.chance='Vous-avez perdu! ';
+			}
 		}
-		if($scope.distance > 0.5 && $scope.distance<=0.6){
+		if(DistanceEnKM > 200 && DistanceEnKM<=300){
 			//score=score-10;
-			
-			$scope.chance='Vous êtes proche! '+nbressais+' essais';
+			$scope.chance='Vous êtes proche! il vous reste '+nbressais+' essais';
+			if(nbressais==0){
+				$scope.chance='Vous-avez perdu! ';
+			}
 		}
-		if($scope.distance>0.6 && $scope.distance <= 0.7){
+		if(DistanceEnKM>300 && DistanceEnKM <= 500){
 			//score=score-30;
-			
-			$scope.chance='Vous êtes un peu loin! '+nbressais+' essais';					
+			$scope.chance='vous n'+"'"+'êtes pas loin! continuez dans cette direction! il vous reste '+nbressais+' essais';
+			if(nbressais==0){
+				$scope.chance='Vous-avez perdu! ';
+			}					
 		}
-		if($scope.distance>0.7 && $scope.distance <= 0.9){
+		if(DistanceEnKM>500 && DistanceEnKM <= 700){
 			//score=score-80;
-			$scope.chance='Vous êtes loin! '+nbressais+' essais';					
+			$scope.chance='Vous êtes loin! il vous reste '+nbressais+' essais';	
+			if(nbressais==0){
+				$scope.chance='Vous-avez perdu! ';
+			}				
 		}
-		if($scope.distance>0.9){
+		if(DistanceEnKM>1000){
 			//score=score-100;
 			$scope.chance='Trop loin!! il vous reste '+nbressais+' essais';
 			if(nbressais==0){
@@ -210,13 +220,13 @@ angular.module('mapControllers', [])
 		if($scope.distance && $scope.chance && info.showHide==false && $scope.essais!=6){
 			popup
 			.setLatLng(e.latlng)
-			.setContent($scope.chance+' distance '+$scope.distance+" ("+DistanceEnKM+")"+" Km")
+			.setContent($scope.chance+' la distance est '+DistanceEnKM+' Km')
 			.openOn(mymap);
 
 			if($scope.essais==4 && $scope.chance=='Excellent!!'){
 				popup
 				.setLatLng(e.latlng)
-				.setContent('Trouvé! mais nul! votre socre est 1/10')
+				.setContent('Trouvé! mais après beacoup d'+"'"+'essais! votre score est 1/10')
 				.openOn(mymap);
 			}
 			
@@ -238,7 +248,7 @@ angular.module('mapControllers', [])
 			if($scope.essais==3 && $scope.chance=='Excellent!!'){
 				popup
 				.setLatLng(e.latlng)
-				.setContent('Trouvé! vous pouvez faire mieux! votre socre est 3/10')
+				.setContent('Trouvé! vous pouvez faire mieux! votre score est 3/10')
 				.openOn(mymap);
 				$scope.essais=$scope.essais+1;
 			}
