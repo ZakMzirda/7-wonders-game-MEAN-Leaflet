@@ -1,6 +1,6 @@
 //collection des 7 mervielles du monde a partir du fichier json
 var mongoose = require('mongoose'); // Import Mongoose Package
-var Schema = mongoose.Schema; // Assign Mongoose Schema function to variable
+var Schema = mongoose.Schema;
 
 var QuestionSchema = new Schema({
     laquestion : {type : String, required:true, unique:true},

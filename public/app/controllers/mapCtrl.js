@@ -23,13 +23,13 @@ angular.module('mapControllers', [])
 	//icon
 	var redIcon = L.icon({
 		iconUrl: 'outils/images/redmarker.png',
-		iconSize:     [20, 30], // size of the icon
+		iconSize:     [20, 30], // taille de l'icon
 		
 	});
 
 	var greenIcon = L.icon({
 		iconUrl: 'outils/images/greenmarker.ico',
-		iconSize:     [20, 30], // size of the icon
+		iconSize:     [20, 30],
 		
 	});
 
@@ -130,7 +130,6 @@ angular.module('mapControllers', [])
 					}
 				}
 				
-				
 				/***************************************************************/
 				var randomQuestion = $scope.question[$scope.randomvalue];
 				var randomQuestion_crdx = $scope.crdx[$scope.randomvalue];
@@ -160,7 +159,7 @@ angular.module('mapControllers', [])
 		
 	}//fin getrndquestion
 	
-	function CalculDistance(e){
+	function TraitementScoreDistance(e){
 		var score = 100;
 		$scope.distance = Math.sqrt((($scope.crdx[$scope.randomvalue]-e.latlng.lat)*($scope.crdx[$scope.randomvalue]-e.latlng.lat))
 		+(($scope.crdy[$scope.randomvalue]-e.latlng.lng)*($scope.crdy[$scope.randomvalue]-e.latlng.lng)));
@@ -168,7 +167,8 @@ angular.module('mapControllers', [])
 		var lat2=$scope.crdx[$scope.randomvalue];
 		var lon1=e.latlng.lng;
 		var lon2=$scope.crdy[$scope.randomvalue];
-		//distance en km
+
+		//Calculer la distance en Km
 		var R = 6371; // rayon de la terre en km
 		var φ1 = lat1*(Math.PI/180);
 		var φ2 = lat2*(Math.PI/180);
@@ -293,6 +293,6 @@ angular.module('mapControllers', [])
 
 	
 
-	mymap.on('click', CalculDistance);
+	mymap.on('click', TraitementScoreDistance);
 	
 });
