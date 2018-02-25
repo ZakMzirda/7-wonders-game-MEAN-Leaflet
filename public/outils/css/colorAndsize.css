@@ -8,6 +8,13 @@
 .map{
     width: 1155px; height: 600px;
 }
+.btn{
+    font-size: 18px;
+    color: #FFF;
+    padding: 12px 22px;
+    background: rgb(0, 162, 255);
+    border: 2px solid #FFF;
+}
 
 /*style image*/
 .imagestyle{
@@ -15,6 +22,18 @@
     width: 50%;
     background-color: powderblue;
 }
+/* style carousel */
+.carousel-caption{
+    top: 50%;
+    transform: translateY(-50%);
+    text-transform: uppercase;
+}
+
+/*jumbotron*/
+.jumbotron {
+    width: 1155px;
+ }
+
 
 /* style popup*/
 .custom .leaflet-popup-tip,

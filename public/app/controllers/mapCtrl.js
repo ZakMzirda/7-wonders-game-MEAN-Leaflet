@@ -114,39 +114,46 @@ angular.module('mapControllers', [])
 		
 		$http.get('api/'+$scope.ApiCall).success(function (response) {
 			var taille = response.maquestion.length;
-			$scope.randomvalue = Math.floor(Math.random() * taille)
-			for(var i =0; i<taille; i++){
-				$scope.question[i]=response.maquestion[i].laquestion;
-				$scope.crdx[i]=response.maquestion[i].coordonnee_x;
-				$scope.crdy[i]=response.maquestion[i].coordonnee_y;
-				$scope.ids[i]=response.maquestion[i]._id;
-				if($scope.ApiCall=='GetQuestionsFromFile'){
-					
-					$scope.lesimagesdata[i]=response.maquestion[i].merveille_image.data;
+			if($scope.ApiCall=='GetQuestionsFromForm' && taille==0){
+				location.href='/questions';
+			}
+			else{
+				$scope.randomvalue = Math.floor(Math.random() * taille)
+				for(var i =0; i<taille; i++){
+					$scope.question[i]=response.maquestion[i].laquestion;
+					$scope.crdx[i]=response.maquestion[i].coordonnee_x;
+					$scope.crdy[i]=response.maquestion[i].coordonnee_y;
+					$scope.ids[i]=response.maquestion[i]._id;
+					if($scope.ApiCall=='GetQuestionsFromFile'){
+						
+						$scope.lesimagesdata[i]=response.maquestion[i].merveille_image.data;
+					}
 				}
-			}
-			
-			
-			/***************************************************************/
-			var randomQuestion = $scope.question[$scope.randomvalue];
-			var randomQuestion_crdx = $scope.crdx[$scope.randomvalue];
-			var randomQuestion_crdy = $scope.crdy[$scope.randomvalue];
-			var id = $scope.ids[$scope.randomvalue];
-			var imgdata =$scope.lesimagesdata[$scope.randomvalue];
+				
+				
+				/***************************************************************/
+				var randomQuestion = $scope.question[$scope.randomvalue];
+				var randomQuestion_crdx = $scope.crdx[$scope.randomvalue];
+				var randomQuestion_crdy = $scope.crdy[$scope.randomvalue];
+				var id = $scope.ids[$scope.randomvalue];
+				var imgdata =$scope.lesimagesdata[$scope.randomvalue];
 
-			//conversion en base64 de l'image 
-		
-			//console.log(imgdata);
-			var binary = '';
-			var bytes = new Uint8Array(imgdata);
-			var len = bytes.byteLength;
-			for (var i = 0; i < len; i++) {
-				binary += String.fromCharCode(bytes[i]);
-			}
-			info.limage=btoa(binary);
-			/*********************/
+				//conversion en base64 de l'image 
 			
-			info.rndquestion=randomQuestion;
+				//console.log(imgdata);
+				var binary = '';
+				var bytes = new Uint8Array(imgdata);
+				var len = bytes.byteLength;
+				for (var i = 0; i < len; i++) {
+					binary += String.fromCharCode(bytes[i]);
+				}
+				info.limage=btoa(binary);
+				/*********************/
+				
+				info.rndquestion=randomQuestion;
+
+			}
+			
 			
 			
 		})

@@ -1,8 +1,8 @@
 <div class="page-header">
-    <h1>7 Merveilles</h1>
+    <h1>jouer ou créez vos propres merveilles</h1>
 </div>
-<body>
-    <button class="btn btn-primary" ng-show="leafletmap.showHide" 
+<div>
+    <button class="btn btn-warning" ng-show="leafletmap.showHide" 
     ng-click="leafletmap.ChangeToApiFile(); leafletmap.getrndQuestion();">7 Merveilles du monde</button>
     <button class="btn btn-warning" ng-show="leafletmap.showHide" 
     ng-click="leafletmap.ChangeToApiForm(); leafletmap.getrndQuestion();">Jeu personnalisé</button>
@@ -10,16 +10,13 @@
     
 
     <br><br>
-   <!-- <div class="jumbotron text-center">
-            <span class="glyphicon glyphicon-repeat spinner" ng-show="leafletmap.loading"></span>
-            <p>Loading...</p>
-    </div>-->
+  
     <div class="jumbotron text-center" class="img-thumbnail" ng-show="leafletmap.rndquestion" ng-if="!leafletmap.showHide">
-        <p ng-if="leafletmap.chance==null" class="input-red">{{leafletmap.rndquestion}}</p>
+        <p ng-if="leafletmap.chance==null" class="input-red" >{{leafletmap.rndquestion}}</p>
         <p class="input-green">{{leafletmap.chance}}</p>
         <img class="imagestyle" class="img-thumbnail" ng-if="leafletmap.showimage" ng-src="data:image/jpg;base64,{{leafletmap.limage}}">
     </div>
     
     <br>
     <div id="mapid" class="map"></div>
-</body>
+</div>
