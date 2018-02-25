@@ -15,9 +15,9 @@ var Question = require('./app/models/questionFromFile');
 
 app.use(morgan('dev')); // Active le middleware de logging
 app.use(bodyParser.json()); // Active le Body-parser middleware
-app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public')); // Autoriser le front end à accéder au dossier public
-app.use('/api', appRoutes); // Assign name to end points (e.g., '/api/management/', '/api/users' ,etc. )
+app.use('/api', appRoutes);
 
 mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
     if (err) {
