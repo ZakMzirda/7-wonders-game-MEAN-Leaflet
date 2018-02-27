@@ -4,8 +4,8 @@
         "laquestion" : "Ou se trouve le Mont Kilimandjaro ?",
         "coordonnee_x" : -3.0674245,
         "coordonnee_y" : 37.3381177,
-        "description" : "Le Kilimandjaro est représentatif de toute la beauté de l’Afrique de l’Est. Il est le pic le plus élevé du continent (5 895 mètres), d’autant qu’il est une montagne qui se dresse seule au centre d’une plaine seulement haute de 900 mètres en moyenne.",
-        "image" : ""
+        "image_nom" : "",
+        "description" : "Le Kilimandjaro est représentatif de toute la beauté de l’Afrique de l’Est. Il est le pic le plus élevé du continent (5 895 mètres), d’autant qu’il est une montagne qui se dresse seule au centre d’une plaine seulement haute de 900 mètres en moyenne."
     },
 
     
@@ -13,8 +13,8 @@
         "laquestion" : "Ou se trouve Le lac Retba ?",
         "coordonnee_x" : 14.8417276,
         "coordonnee_y" : -17.2453492,
-        "description" : "Situé au bord de l’océan à quelques kilomètres de Dakar, le lac Retba ou lac Rose intrigue par son étrange couleur.",
-        "image" : ""
+        "image_nom" : "",
+        "description" : "Situé au bord de l’océan à quelques kilomètres de Dakar, le lac Retba ou lac Rose intrigue par son étrange couleur."
     },
 
     
@@ -22,8 +22,8 @@
         "laquestion" : "Ou se trouve le Parc des Tsingy de Bemaraha ?",
         "coordonnee_x" : -18.89767,
         "coordonnee_y" : 44.8276213,
-        "description" : "Les Tsingy représentent une des nombreuses curiosités de l’île malgaches. Au cours de millions d’années, les dépôts ont été sculptés par les gouttes de pluies et les vents pour former cette forêt de roches calcaires.",
-        "image" : ""
+        "image_nom" : "",
+        "description" : "Les Tsingy représentent une des nombreuses curiosités de l’île malgaches. Au cours de millions d’années, les dépôts ont été sculptés par les gouttes de pluies et les vents pour former cette forêt de roches calcaires."
     },
 
     
@@ -31,8 +31,8 @@
         "laquestion" : "Ou se trouve Piton de la Fournaise ?",
         "coordonnee_x" : -21.2494278,
         "coordonnee_y" : 55.6762222,
-        "description" : "Le Piton de la Fournaise est un volcan sur la côte orientale de l’île de la Réunion dans l’Océan Indien. Il est un des volcans les plus actifs du monde et culmine à 2632 mètres d’altitude.",
-        "image" : ""
+        "image_nom" : "",
+        "description" : "Le Piton de la Fournaise est un volcan sur la côte orientale de l’île de la Réunion dans l’Océan Indien. Il est un des volcans les plus actifs du monde et culmine à 2632 mètres d’altitude."
     },
 
     
@@ -40,8 +40,8 @@
         "laquestion" : "Ou se trouve le Lac Turkana ?",
         "coordonnee_x" : 3.4561582,
         "coordonnee_y" : 35.1471546,
-        "description" : "Tout au Nord du Kenya, le site du lac Turkana est grand de 7 200 km², et le lac en soi est le plus grand lac salé situé dans une zone désertique au monde.",
-        "image" : ""
+        "image_nom" : "",
+        "description" : "Tout au Nord du Kenya, le site du lac Turkana est grand de 7 200 km², et le lac en soi est le plus grand lac salé situé dans une zone désertique au monde."
     },
 
     
@@ -49,8 +49,8 @@
         "laquestion" : "Ou se trouve Les Cascades de Hammam Chellala ?",
         "coordonnee_x" : 36.4599982,
         "coordonnee_y" : 7.2524904,
-        "description" : "Dans l’ouest algérien les sources thermales qui jaillissent de la terre sont nombreuses. La plus impressionnante d’entre-elles n’est autre que celle de Hammam Chellala anciennement appelée Hammam Meskhoutine.",
-        "image" : ""
+        "image_nom" : "",
+        "description" : "Dans l’ouest algérien les sources thermales qui jaillissent de la terre sont nombreuses. La plus impressionnante d’entre-elles n’est autre que celle de Hammam Chellala anciennement appelée Hammam Meskhoutine."
     },
 
     
@@ -58,8 +58,8 @@
         "laquestion" : "Ou se trouve La vallée du récif de la Mer rouge ?",
         "coordonnee_x" : 19.1471325,
         "coordonnee_y" : 23.4898441,
-        "description" : "La mer Rouge est située entre l’Afrique et l’Asie. Son récif s’étend sur plus d’un km, le long des côtes égyptienne, soudanaise et érythréenne et son écosystème abrite plus 400 espèces de coraux et près de 1500 variétés de poissons.",
-        "image" : ""
+        "image_nom" : "",
+        "description" : "La mer Rouge est située entre l’Afrique et l’Asie. Son récif s’étend sur plus d’un km, le long des côtes égyptienne, soudanaise et érythréenne et son écosystème abrite plus 400 espèces de coraux et près de 1500 variétés de poissons."
     }
 ]
 }

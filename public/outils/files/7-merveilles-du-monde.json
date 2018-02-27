@@ -5,7 +5,7 @@
             "coordonnee_x" : 29.9792345,
             "coordonnee_y" : 31.1320132,
             "image_nom" : "Pyramide-de-Kheops",
-            "description" : ""
+            "description" : "La pyramide de Khéops est un monument construit par les Égyptiens de l'Antiquité, formant une pyramide à base carrée"
         },
 
         
@@ -14,7 +14,7 @@
             "coordonnee_x" : 33.1401745,
             "coordonnee_y" : 39.2219768,
             "image_nom" : "Jardins-suspendus-de-Babylone",
-            "description" : ""
+            "description" : "Les jardins suspendus de Babylone sont un édifice antique, qui apparaissent dans les écrits de plusieurs auteurs grecs et romains antiques"
         },
 
         
@@ -23,7 +23,7 @@
             "coordonnee_x" : 37.6384588,
             "coordonnee_y" : 21.6276909,
             "image_nom" : "Statue-chryselephantine-de-Zeus",
-            "description" : ""
+            "description" : "La statue de Zeus est une œuvre du sculpteur athénien Phidias, réalisée vers 436 av. J.-C. à Olympie"
         },
 
         
@@ -32,7 +32,7 @@
             "coordonnee_x" : 37.038132,
             "coordonnee_y" : 27.4221962,
             "image_nom" : "Mausolee-dHalicarnasse",
-            "description" : ""
+            "description" : "Le mausolée d'Halicarnasse est le tombeau de Mausole"
         },
 
         {
@@ -40,7 +40,7 @@
             "coordonnee_x" : 37.9493601,
             "coordonnee_y" : 27.3616675,
             "image_nom" : "Temple-dArtemis",
-            "description" : ""
+            "description" : "Le Temple d'Artémis est dans l'Antiquité l'un des plus importants sanctuaires d'Artémis, déesse grecque de la chasse et de la nature sauvage"
         },
         
         {
@@ -48,7 +48,7 @@
             "coordonnee_x" : 36.4510656,
             "coordonnee_y" : 28.2236446,
             "image_nom" : "Colosse-de-Rhodes",
-            "description" : ""
+            "description" : "Le colosse de Rhodes était une statue d'Hélios, le dieu Soleil, en bronze, dont la hauteur dépassait trente mètres, œuvre de Charès de Lindos."
         },
 
         
@@ -57,7 +57,7 @@
             "coordonnee_x" : 31.2240349,
             "coordonnee_y" : 29.8148008,
             "image_nom" : "Phare-dAlexandrie",
-            "description" : ""
+            "description" : "Le Phare d'Alexandrie  a servi de guide aux marins pendant près de dix-sept siècles (du iiie siècle av. J.-C. au xive siècle)"
         }
     ]
 }

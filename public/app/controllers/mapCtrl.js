@@ -33,7 +33,6 @@ angular.module('mapControllers', [])
 		
 	});
 
-	/*
 	//markers
 	//merveilles du monde
 	//la pyramide de Khéops
@@ -66,7 +65,7 @@ angular.module('mapControllers', [])
 	L.marker([36.4599982, 7.2524904], {icon: greenIcon}).addTo(mymap);
 	//La vallée du récif de la Mer rouge
 	L.marker([19.1471325, 23.4898441], {icon: greenIcon}).addTo(mymap);
-	*/
+	
 	var PopupOptions =
         {
         'maxWidth': '500',
@@ -184,10 +183,10 @@ angular.module('mapControllers', [])
 		//
 		var k=4;
 		var nbressais=k-$scope.essais;
-		if($scope.distance <= 100){
+		if($scope.distance <= 50){
 			$scope.chance='Excellent!!';
 		}
-		if(DistanceEnKM > 100 && DistanceEnKM<=200){
+		if(DistanceEnKM > 50 && DistanceEnKM<=200){
 			//score=score-5;
 			$scope.chance='Vous êtes très proche! il vous reste '+nbressais+' essais';
 			if(nbressais==0){
