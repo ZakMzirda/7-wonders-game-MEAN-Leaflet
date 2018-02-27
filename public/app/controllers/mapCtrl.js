@@ -36,7 +36,7 @@ angular.module('mapControllers', [])
 	//markers
 	//merveilles du monde
 	//la pyramide de Khéops
-	L.marker([29.9792345, 31.1320132], {icon: redIcon}).addTo(mymap).bindPopup("pyramide de Khéops").openPopup();
+	/*L.marker([29.9792345, 31.1320132], {icon: redIcon}).addTo(mymap).bindPopup("pyramide de Khéops").openPopup();
 	//les jardins suspendus de Babylone
 	L.marker([33.1401745, 39.2219768], {icon: redIcon}).addTo(mymap).bindPopup("les jardins suspendus de Babylone").openPopup();
 	//la statue de Zeus
@@ -49,7 +49,7 @@ angular.module('mapControllers', [])
 	L.marker([36.4510656, 28.2236446], {icon: redIcon}).addTo(mymap).bindPopup("le Colosse de Rhodes").openPopup();
 	//le Phare d'Alexandrie
 	L.marker([31.2240349, 29.8148008], {icon: redIcon}).addTo(mymap).bindPopup("le Phare d'Alexandrie").openPopup();
-
+	*/
 	//merveilles d'afrique
 	// Mont Kilimandjaro
 	L.marker([-3.0674245, 37.3381177], {icon: greenIcon}).addTo(mymap);
