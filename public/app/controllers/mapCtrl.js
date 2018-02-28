@@ -188,10 +188,10 @@ angular.module('mapControllers', [])
 		//
 		var k=4;
 		var nbressais=k-$scope.essais;
-		if($scope.distance <= 100){
+		if(DistanceEnKM <= 80){
 			$scope.chance='Excellent!!';
 		}
-		if(DistanceEnKM > 100 && DistanceEnKM<=200){
+		if(DistanceEnKM > 80 && DistanceEnKM<=200){
 			//score=score-5;
 			$scope.chance='Vous êtes très proche! il vous reste '+nbressais+' essais';
 			if(nbressais==0){
