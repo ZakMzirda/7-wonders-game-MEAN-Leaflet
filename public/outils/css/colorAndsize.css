@@ -1,10 +1,14 @@
-.input-red {
+.questionStyle {
+    border: 3px solid rgb(0, 217, 255);
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    color:black; 
+    font-family:Arial black;
+    background-color: orange;
     
-    color: rgb(40, 95, 158);
-   }
-.input-green{
-    color: rgb(60, 158, 40);
 }
+
 .map{
     width: 1155px; height: 600px;
 }
@@ -17,10 +21,10 @@
 }
 
 /*style image*/
-.imagestyle{
-    height: 200px;
-    width: 50%;
-    background-color: powderblue;
+.img-thumbnail{
+    height: 300px;
+    width: 400px;
+    background-color: black;
 }
 /* style carousel */
 .carousel-caption{
@@ -32,6 +36,8 @@
 /*jumbotron*/
 .jumbotron {
     width: 1155px;
+    height: 490px;
+   
  }
 
 
@@ -40,10 +46,23 @@
 .custom .leaflet-popup-content-wrapper {
     background: rgb(0, 255, 242);
     color: black;
-    font-family : serif;
-    font-style :italic;
+    font-family:Arial Black;
+    /*font-style :italic;*/
     box-shadow :3px 3px rgba(0,0,0,0.25);
-    font-size:30px;
+    font-size:25px;
     text-align:center;
     border-color:rgba(0,0,0,0.5);
+}
+
+.styleDescription{
+    border: 5px solid rgb(0, 217, 255);
+    padding: 8px;
+    text-indent: 50px;
+    text-align: center;
+    letter-spacing: 3px;
+    height: auto;
+    width: 500px;
+    margin:auto;
+    background-color: white;
+    
 }

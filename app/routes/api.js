@@ -7,10 +7,11 @@ module.exports = function(router) {
         var question = new QuestionForm(); 
         question.laquestion = req.body.laquestion; 
         question.coordonnee_x = req.body.coordonnee_x; 
-        question.coordonnee_y = req.body.coordonnee_y;       
+        question.coordonnee_y = req.body.coordonnee_y;
+        question.description=req.body.description;       
         question.les_scores=0;
         
-            if(req.body.laquestion==null || req.body.laquestion=='' || req.body.coordonnee_x==null || req.body.coordonnee_x=='' || req.body.coordonnee_y==null || req.body.coordonnee_y==''){
+            if(req.body.laquestion==null || req.body.laquestion=='' || req.body.coordonnee_x==null || req.body.coordonnee_x=='' || req.body.coordonnee_y==null || req.body.coordonnee_y==''|| req.body.description==null || req.body.description==''){
                 res.json({success: false, message :'Vous avez oublié un champ'});
             }else{
                 question.save(function(err){

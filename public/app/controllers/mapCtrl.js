@@ -8,6 +8,7 @@ angular.module('mapControllers', [])
 	$scope.crdx=[];
 	$scope.crdy=[];
 	$scope.ids=[];
+	$scope.description=[];
 	$scope.lesimagesdata=[];
 	$scope.ApiCall='';
 	$scope.essais=0;
@@ -110,6 +111,7 @@ angular.module('mapControllers', [])
 	
 	this.getrndQuestion=function Getrndquestion(){
 		info.rndquestion="";
+		info.rnddescription="";
 		
 		$http.get('api/'+$scope.ApiCall).success(function (response) {
 			var taille = response.maquestion.length;
@@ -123,6 +125,7 @@ angular.module('mapControllers', [])
 					$scope.crdx[i]=response.maquestion[i].coordonnee_x;
 					$scope.crdy[i]=response.maquestion[i].coordonnee_y;
 					$scope.ids[i]=response.maquestion[i]._id;
+					$scope.description[i]=response.maquestion[i].description;
 					if($scope.ApiCall=='GetQuestionsFromFile'){
 						
 						$scope.lesimagesdata[i]=response.maquestion[i].merveille_image.data;
@@ -133,6 +136,7 @@ angular.module('mapControllers', [])
 				var randomQuestion = $scope.question[$scope.randomvalue];
 				var randomQuestion_crdx = $scope.crdx[$scope.randomvalue];
 				var randomQuestion_crdy = $scope.crdy[$scope.randomvalue];
+				var randomDescription = $scope.description[$scope.randomvalue];
 				var id = $scope.ids[$scope.randomvalue];
 				var imgdata =$scope.lesimagesdata[$scope.randomvalue];
 
@@ -149,6 +153,7 @@ angular.module('mapControllers', [])
 				/*********************/
 				
 				info.rndquestion=randomQuestion;
+				info.rnddescription=randomDescription;
 
 			}
 			
@@ -183,10 +188,10 @@ angular.module('mapControllers', [])
 		//
 		var k=4;
 		var nbressais=k-$scope.essais;
-		if($scope.distance <= 50){
+		if($scope.distance <= 100){
 			$scope.chance='Excellent!!';
 		}
-		if(DistanceEnKM > 50 && DistanceEnKM<=200){
+		if(DistanceEnKM > 100 && DistanceEnKM<=200){
 			//score=score-5;
 			$scope.chance='Vous êtes très proche! il vous reste '+nbressais+' essais';
 			if(nbressais==0){

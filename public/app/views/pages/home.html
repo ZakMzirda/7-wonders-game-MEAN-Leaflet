@@ -11,10 +11,18 @@
 
     <br><br>
   
-    <div class="jumbotron text-center" class="img-thumbnail" ng-show="leafletmap.rndquestion" ng-if="!leafletmap.showHide">
-        <p ng-if="leafletmap.chance==null" class="input-red" >{{leafletmap.rndquestion}}</p>
-        <p class="input-green">{{leafletmap.chance}}</p>
-        <img class="imagestyle" class="img-thumbnail" ng-if="leafletmap.showimage" ng-src="data:image/jpg;base64,{{leafletmap.limage}}">
+    <div class="jumbotron text-center" ng-show="leafletmap.rndquestion" ng-if="!leafletmap.showHide" style="background-image:url('outils/images/wonders.png');">
+        <div class="questionStyle"><p ng-if="leafletmap.chance==null">{{leafletmap.rndquestion}}</p></div>
+        <br>
+        <div class="col-sm-6">
+                <img class="img-thumbnail" ng-if="leafletmap.showimage" ng-src="data:image/jpg;base64,{{leafletmap.limage}}">
+        </div>
+        
+        <br><br>
+        <div class="col-sm-6">
+                <div class="styleDescription"><p ng-if="leafletmap.chance==null" >{{leafletmap.rnddescription}}</p></div>
+        </div>
+        
     </div>
     
     <br>

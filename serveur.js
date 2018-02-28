@@ -53,7 +53,8 @@ mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
                             
                             question.laquestion = jsonParsed.Questions[i].laquestion; 
                             question.coordonnee_x = jsonParsed.Questions[i].coordonnee_x;
-                            question.coordonnee_y = jsonParsed.Questions[i].coordonnee_y;  
+                            question.coordonnee_y = jsonParsed.Questions[i].coordonnee_y;
+                            question.description = jsonParsed.Questions[i].description;
                             question.les_scores=0;
                             question.save(function(err){
                                 if(err){
