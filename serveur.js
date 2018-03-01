@@ -11,6 +11,7 @@ var fs = require('fs');//charger le fichier json
 
 
 var Question = require('./app/models/questionFromFile');
+var QuestionAfrique = require('./app/models/questionAfrique');
 
 
 app.use(morgan('dev')); // Active le middleware de logging
@@ -63,7 +64,61 @@ mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
                                     console.log('>>>> Question ajoutée! <<<<');
                                 }
                                 if(compteur==jsonParsed.Questions.length-1){
-                                    console.log('\nFin de chargement!');
+                                    console.log('\nFin de chargement! 7 merveilles du monde!\n');
+                                }
+                                compteur++;
+
+                            });
+                        }
+                        //console.log('\nChargement...\n');
+                    }
+                 }); 
+            }
+            
+    });
+
+        //7 merveilles d'afrique
+        fs.readFile(__dirname+'/public/outils/files/7-merveilles-Afrique.json',
+
+        // callback function that is called when reading file is done
+        function(err, data) {		
+            if(err){
+                console.log('ERREUR (!)'+err);
+            }else{
+                QuestionAfrique.remove({}, function(err) {
+                    if(err) {
+                        console.log('ERREUR (!)'+err)
+                    }else{
+                        var jsonData = data;
+                        var jsonParsed = JSON.parse(jsonData);
+                        var compteur=0;
+                        var image=['mont-kilimandjaro','lac-rose','parc-tsingy','piton-de-la-fournaise',
+                                    'lac-turkana','Cascades-de-Hammam-Chellala','la-vallee-du-recif'];
+                        
+                        for(var i =0; i<jsonParsed.Questions.length;i++){
+                        
+                            var question = new QuestionAfrique();
+                            var imgPath = __dirname+'/public/outils/images/'+image[i]+'.jpg';
+                            for(var j=0;j<image.length;j++){
+                                if(image[j]==jsonParsed.Questions[i].image_nom){
+                                    question.merveille_image=fs.readFileSync(imgPath);
+                                }
+                            }
+                            
+                            question.laquestion = jsonParsed.Questions[i].laquestion; 
+                            question.coordonnee_x = jsonParsed.Questions[i].coordonnee_x;
+                            question.coordonnee_y = jsonParsed.Questions[i].coordonnee_y;
+                            question.description = jsonParsed.Questions[i].description;
+                            question.les_scores=0;
+                            question.save(function(err){
+                                if(err){
+                                    console.log('############### Question non chargée! ###############');
+                                }else{
+                                    console.log('>>>> Question ajoutée! <<<<');
+                                }
+                                if(compteur==jsonParsed.Questions.length-1){
+                                    console.log('\nFin de chargement! 7 merveilles d'+"'"+'Afrique!\n');
+
                                 }
                                 compteur++;
 
@@ -71,11 +126,10 @@ mongoose.connect('mongodb://localhost:27017/MeanDB', function(err) {
                         }
                         console.log('\nChargement...\n');
                     }
-                 }); 
+                }); 
             }
             
     });
-
 
 
         console.log('Connecté avec succès à MongoDB'); 

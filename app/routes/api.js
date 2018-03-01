@@ -1,5 +1,7 @@
 var QuestionFile = require('../models/questionFromFile'); 
-var QuestionForm = require('../models/questionFromForm'); 
+var QuestionForm = require('../models/questionFromForm');
+var QuestionFormAfrique = require('../models/questionAfrique'); 
+ 
 
 module.exports = function(router) {
 
@@ -83,6 +85,20 @@ module.exports = function(router) {
     });
     router.get('/GetQuestionsFromForm', function(req, res) {
         QuestionForm.find({}, function(err, maquestion){
+
+
+            if(err){
+                res.json({success: false, message :'Erreur(!) sur la recuperation des données'});
+
+            }else{
+                res.json({success: true, message :'Recuperation des données avec succès', maquestion});
+
+            }
+     
+        });
+    });
+    router.get('/GetQuestionsFromFileAfrique', function(req, res) {
+        QuestionFormAfrique.find({}, function(err, maquestion){
 
 
             if(err){

@@ -103,6 +103,13 @@ angular.module('mapControllers', [])
 		info.showimage=true;
 
 	}
+	this.ChangeToApiFileAfrique=function changeApiFileafrique(){
+		
+		$scope.ApiCall='GetQuestionsFromFileAfrique';
+		info.showHide=false;
+		info.showimage=true;
+
+	}
 	this.resetquestion=function resetQuestion(){
 		info.rndquestion='';
 		info.showHide=true;
@@ -112,7 +119,6 @@ angular.module('mapControllers', [])
 	this.getrndQuestion=function Getrndquestion(){
 		info.rndquestion="";
 		info.rnddescription="";
-		
 		$http.get('api/'+$scope.ApiCall).success(function (response) {
 			var taille = response.maquestion.length;
 			if($scope.ApiCall=='GetQuestionsFromForm' && taille==0){
@@ -126,7 +132,7 @@ angular.module('mapControllers', [])
 					$scope.crdy[i]=response.maquestion[i].coordonnee_y;
 					$scope.ids[i]=response.maquestion[i]._id;
 					$scope.description[i]=response.maquestion[i].description;
-					if($scope.ApiCall=='GetQuestionsFromFile'){
+					if($scope.ApiCall=='GetQuestionsFromFile' || $scope.ApiCall=='GetQuestionsFromFileAfrique'){
 						
 						$scope.lesimagesdata[i]=response.maquestion[i].merveille_image.data;
 					}
@@ -139,7 +145,6 @@ angular.module('mapControllers', [])
 				var randomDescription = $scope.description[$scope.randomvalue];
 				var id = $scope.ids[$scope.randomvalue];
 				var imgdata =$scope.lesimagesdata[$scope.randomvalue];
-
 				//conversion en base64 de l'image 
 			
 				//console.log(imgdata);
@@ -188,10 +193,10 @@ angular.module('mapControllers', [])
 		//
 		var k=4;
 		var nbressais=k-$scope.essais;
-		if(DistanceEnKM <= 80){
+		if(DistanceEnKM <= 100){
 			$scope.chance='Excellent!!';
 		}
-		if(DistanceEnKM > 80 && DistanceEnKM<=200){
+		if(DistanceEnKM > 100 && DistanceEnKM<=200){
 			//score=score-5;
 			$scope.chance='Vous êtes très proche! il vous reste '+nbressais+' essais';
 			if(nbressais==0){
