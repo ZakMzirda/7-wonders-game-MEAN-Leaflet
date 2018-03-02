@@ -1,4 +1,4 @@
-# PFE-MEAN
+#Le sujet du projet de fin d'études :
 Description : MEAN est un bundle open-source pour développer des applications Web en JavaScript (côté client ET côté serveur). 
 L’acronyme MEAN correspond respectivement à :
 • MongoDB,
